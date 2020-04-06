@@ -1,0 +1,46 @@
+html{width: 100%; height: 100%;}
+body{ width: 100%; height: 100%;  background-color: whitesmoke !important;}
+.containers{background-color: whitesmoke !important; width: 100%; height: 100%; padding-top: 80px;}
+.content_box
+{ 
+    padding: 0% 0% 0% 0%; 
+    margin : 5% 25% 10% 25%;
+    height: 70%; 
+    background-color: rgb(5, 5, 63);
+    border-radius: 50px;
+    
+}
+.content1
+{
+    color: white;
+    padding: 20% 15% 10% 15%;
+}
+
+header
+{
+    background-color:rgb(5, 5, 63);
+    padding-top: 1px;
+    height: 50px;
+    display: block;
+}
+header nav
+{
+    margin-bottom: 0px;
+    display: block;
+    height: auto;
+    padding-bottom: 0;
+    overflow: visible;
+    float: right;
+}
+header .logo_box img
+{
+    width: 130px;
+    float: left;
+    height: 48px;
+}
+header nav .nav_top-link_nav-right{ text-align: right; height: 100%;}
+header nav ul li{height: 100%;margin:10px 10px 10px 30px;}
+header nav ul li .profile img{width: 30px; height: 30px; margin: 0px 10px 0px 0px ;}
+header nav ul li a{color: white; height: 100%; font-size: 16px;font-weight:600; line-height:30px;}
+header nav ul li:hover a{color: skyblue;}
+ol, ul, li {list-style:none}

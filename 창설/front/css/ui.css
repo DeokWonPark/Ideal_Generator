@@ -49,7 +49,7 @@ header nav
     overflow: visible;
     float: right;
 }
-header .logo_box > img
+header .logo_box  img
 {
     width: 130px;
     float: left;
