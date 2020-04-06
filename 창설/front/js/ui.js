@@ -31,19 +31,53 @@ $(document).ready(function(){
             
         // })
         $(document).on("click",left_page,function(){
-            alert("sss");
-            $(left_page).attr("src","../images/girl3.PNG");
-            $(left_page).attr("id","Kyungri");
-            $(".select_page #left_text").text("경리");
-            left_page='#Kyungri';
-            $(right_page).attr("src","../images/girl4.PNG");
-            $(right_page).attr("id","momo");
-            $(".select_page #right_text").text("모모");
-            right_page="#momo";
+            $(left_page).animate({
+                width: "100%",
+                height: "100%",
+                opacity: 0.5
+              },
+              1000,function() {
+                $(left_page).animate({
+                    width: "300px",
+                    height: "400px",
+                    opacity: 1.0
+                  },
+                  0);
+
+                $(left_page).attr("src","../images/girl3.PNG");
+                $(left_page).attr("id","Kyungri");
+                $(".select_page #left_text").text("경리");
+                left_page='#Kyungri';
+                $(right_page).attr("src","../images/girl4.PNG");
+                $(right_page).attr("id","momo");
+                $(".select_page #right_text").text("모모");
+                right_page="#momo";
+            });
         });
 
         $(document).on("click",right_page,function(){
-            alert(right_page);
+            $(right_page).animate({
+                width: "100%",
+                height: "100%",
+                opacity: 0.5
+              },
+              1000,function() {
+                $(right_page).animate({
+                    width: "300px",
+                    height: "400px",
+                    opacity: 1.0
+                  },
+                  0);
+
+                $(left_page).attr("src","../images/girl3.PNG");
+                $(left_page).attr("id","Kyungri");
+                $(".select_page #left_text").text("경리");
+                left_page='#Kyungri';
+                $(right_page).attr("src","../images/girl4.PNG");
+                $(right_page).attr("id","momo");
+                $(".select_page #right_text").text("모모");
+                right_page="#momo";
+            });
         });
     });
 
@@ -61,19 +95,54 @@ $(document).ready(function(){
 
         // 내부
         $(document).on("click",left_page,function(){
-            alert(left_page);
+            $(left_page).animate({
+                width: "100%",
+                height: "100%",
+                opacity: 0.5
+              },
+              1000,function() {
+                $(left_page).animate({
+                    width: "300px",
+                    height: "400px",
+                    opacity: 1.0
+                  },
+                  0);
+
+                $(left_page).attr("src","../images/man3.PNG");
+                $(left_page).attr("id","bohyunahn");
+                $(".select_page #left_text").text("안보현");
+                left_page='#bohyunahn';
+                $(right_page).attr("src","../images/man4.PNG");
+                $(right_page).attr("id","GD");
+                $(".select_page #right_text").text("GD");
+                right_page="#GD";
+            });
         });
 
         $(document).on("click",right_page,function(){
-            alert(right_page);
+            $(right_page).animate({
+                width: "100%",
+                height: "100%",
+                opacity: 0.5
+              },
+              1000,function() {
+                $(right_page).animate({
+                    width: "300px",
+                    height: "400px",
+                    opacity: 1.0
+                  },
+                  0);
+
+                $(left_page).attr("src","../images/man3.PNG");
+                $(left_page).attr("id","bohyunahn");
+                $(".select_page #left_text").text("안보현");
+                left_page='#bohyunahn';
+                $(right_page).attr("src","../images/man4.PNG");
+                $(right_page).attr("id","GD");
+                $(".select_page #right_text").text("GD");
+                right_page="#GD";
+            });
         });
     });
 
-    
-    
-
-	//로고 클릭 시
-	$(".logo_box").click(function(){
-		$(location).attr('href','Worldcup.html');
-	});
 });
