@@ -193,6 +193,7 @@ router.route('/start/first/ing').post(function(req,res){
             for (i of remain_img){
                 all_img.push(i);
             }
+            remain_img=[];
         }
 
         random_index1=Math.floor(Math.random()*all_img.length);

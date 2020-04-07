@@ -66,6 +66,11 @@ $(document).ready(function(){
                 success:function(result){
                     if(result.status==='final'){
                         alert("the end");
+
+
+                        //id 변경해서 클릭 이번트제거
+                        $("#left_girl").attr("id","Win");
+                        $("#right_girl").attr("id","Lose");
                     }
                     else{
                         $("#left_girl").attr("src",result[0].img_path);
@@ -109,20 +114,29 @@ $(document).ready(function(){
                 type:'POST',
                 data:{pos:'right'},
                 success:function(result){
-                    $("#left_girl").attr("src",result[0].img_path);
-                    $(".select_page #left_text").text(result[0].name);
-                    left_page=result[0].name;
-                    $("#right_girl").attr("src",result[1].img_path);
-                    $(".select_page #right_text").text(result[1].name);
-                    right_page=result[1].name;
-                    count_v=count_v-2;
-                    if(count_v==0){
-                        count=count/2;
-                        count_v=count;
-                        if(count==2)
-                            $(".select_head h1").text("결승전");
-                        else
-                            $(".select_head h1").text(count+"강");
+                    if(result.status==='final'){
+                        alert("the end");
+
+                        //id 변경해서 클릭 이번트제거
+                        $("#left_girl").attr("id","Lose");
+                        $("#right_girl").attr("id","Win");
+                    }
+                    else{
+                        $("#left_girl").attr("src",result[0].img_path);
+                        $(".select_page #left_text").text(result[0].name);
+                        left_page=result[0].name;
+                        $("#right_girl").attr("src",result[1].img_path);
+                        $(".select_page #right_text").text(result[1].name);
+                        right_page=result[1].name;
+                        count_v=count_v-2;
+                        if(count_v==0){
+                            count=count/2;
+                            count_v=count;
+                            if(count==2)
+                                $(".select_head h1").text("결승전");
+                            else
+                                $(".select_head h1").text(count+"강");
+                        }
                     }
                 }
             });
@@ -166,12 +180,39 @@ $(document).ready(function(){
               },
               0);
 
-            $("#left_man").attr("src","../images/man/man3.PNG");
-            $(".select_page #left_text").text("안보현");
-            left_page='bohyunahn';
-            $("#right_man").attr("src","../images/man/man4.PNG");
-            $(".select_page #right_text").text("GD");
-            right_page="GD";
+              $.ajax({
+                url:'/start/first/ing',
+                dataType:'json',
+                type:'POST',
+                data:{pos:'left'},
+                success:function(result){
+                    if(result.status==='final'){
+                        alert("the end");
+
+                        
+                        //id 변경해서 클릭 이번트제거
+                        $("#left_man").attr("id","Win");
+                        $("#right_man").attr("id","Lose");
+                    }
+                    else{
+                        $("#left_man").attr("src",result[0].img_path);
+                        $(".select_page #left_text").text(result[0].name);
+                        left_page=result[0].name;
+                        $("#right_man").attr("src",result[1].img_path);
+                        $(".select_page #right_text").text(result[1].name);
+                        right_page=result[1].name;
+                        count_v=count_v-2;
+                        if(count_v==0){
+                            count=count/2;
+                            count_v=count;
+                            if(count==2)
+                                $(".select_head h1").text("결승전");
+                            else
+                                $(".select_head h1").text(count+"강");
+                        }
+                    }
+                }
+            });
         });
     });
 
@@ -189,12 +230,39 @@ $(document).ready(function(){
               },
               0);
 
-            $("#left_man").attr("src","../images/man/man3.PNG");
-            $(".select_page #left_text").text("안보현");
-            left_page='bohyunahn';
-            $("#right_man").attr("src","../images/man/man4.PNG");
-            $(".select_page #right_text").text("GD");
-            right_page="GD";
+              $.ajax({
+                url:'/start/first/ing',
+                dataType:'json',
+                type:'POST',
+                data:{pos:'right'},
+                success:function(result){
+                    if(result.status==='final'){
+                        alert("the end");
+
+                        
+                        //id 변경해서 클릭 이번트제거
+                        $("#left_man").attr("id","Lose");
+                        $("#right_man").attr("id","Win");
+                    }
+                    else{
+                        $("#left_man").attr("src",result[0].img_path);
+                        $(".select_page #left_text").text(result[0].name);
+                        left_page=result[0].name;
+                        $("#right_man").attr("src",result[1].img_path);
+                        $(".select_page #right_text").text(result[1].name);
+                        right_page=result[1].name;
+                        count_v=count_v-2;
+                        if(count_v==0){
+                            count=count/2;
+                            count_v=count;
+                            if(count==2)
+                                $(".select_head h1").text("결승전");
+                            else
+                                $(".select_head h1").text(count+"강");
+                        }
+                    }
+                }
+            });
         });
     });
 
