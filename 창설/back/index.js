@@ -27,7 +27,7 @@ app.use(session({
     saveUninitialized:true,
 }));
 
-
+/////////////////////////////////////////////////////////////
 //데이터베이스 연결
 
 var mysql=require('mysql');
@@ -40,8 +40,11 @@ var pool=mysql.createPool({
     debug:false,
 });
 
+var sqlgirlimg = 'SELECT name, img_path FROM girl WHERE id=? OR id=?';
+var sqlmanimg = 'SELECT name, img_path FROM man WHERE id=? OR id=?';
 
-// 데이터베이스에 사용자 추가 
+////////////////////////////////////////////////////////////////
+// 회원추가 
 
 function addUser(id,name,password,nickname,gender,callback){
 
@@ -101,10 +104,136 @@ function authUser(id,password,callback){
     })
 }
 
+
+////////////////////////////////////////////////////
+
+// 라우팅
 var router=express.Router();
 
-// 로그인 페이지 라우팅
+var all_img;
+var remain_img;
+var random_index1;
+var random_index2;
+var sqlquery;
+var prams=[];
 
+router.route('/start').post(function(req,res){
+    all_img=[1,2,3,4,5,6,7,8];
+    remain_img=[];
+    prams=[];
+});
+
+router.route('/start/first').post(function(req,res){
+
+    random_index1=Math.floor(Math.random()*all_img.length);
+    random_index2=Math.floor(Math.random()*(all_img.length-1));
+    console.log(random_index1,random_index2);
+
+    prams.push(all_img[random_index1]);
+    all_img.splice(random_index1,1);
+    prams.push(all_img[random_index2]);
+    all_img.splice(random_index2,1);
+    prams.sort();
+    console.log(prams);
+    console.log(all_img);
+    
+    pool.getConnection( function(err, connection) 
+    {  
+        if (err) 
+            throw err;
+        else 
+        {
+            // 남자 여자 장르 선택 db query
+            console.log("선택된 장르:"+req.body.pos);
+            if(req.body.pos==='girl'){
+                sqlquery=sqlgirlimg;
+            }
+            else if(req.body.pos==='man'){
+                sqlquery=sqlmanimg;
+            }
+
+            // 커넥션 사용
+            connection.query(sqlquery,prams, function(err, results) 
+            {
+                if (err) 
+                    throw err;
+                else 
+                    console.log(results);
+                    res.send(results);
+            });
+            // 커넥션 반환 
+            connection.release();
+            
+        }
+    });
+});
+
+
+router.route('/start/first/ing').post(function(req,res){
+
+    // 선택된 index 저장
+    console.log("선택된 위치:"+req.body.pos);
+    if(req.body.pos==='left'){
+        remain_img.push(prams[0]);
+    }
+    else if(req.body.pos==='right'){
+        remain_img.push(prams[1]);
+    }
+    console.log("remain_img: ",remain_img);
+
+    prams=[];
+
+    if(all_img.length==0 && remain_img.length==1){
+        res.send({status:"final"});
+        console.log("The End");
+    }
+    else{
+        // 1개의 강이 끝남 (강: 16강, 8강...)
+        if(all_img.length==0){
+            for (i of remain_img){
+                all_img.push(i);
+            }
+        }
+
+        random_index1=Math.floor(Math.random()*all_img.length);
+        random_index2=Math.floor(Math.random()*(all_img.length-1));
+        console.log(random_index1,random_index2);
+
+        prams.push(all_img[random_index1]);
+        all_img.splice(random_index1,1);
+        prams.push(all_img[random_index2]);
+        all_img.splice(random_index2,1);
+        prams.sort();
+        console.log(prams);
+        console.log(all_img);
+        
+        pool.getConnection( function(err, connection) 
+        {  
+            if (err) 
+                throw err;
+            else 
+            {
+                // 커넥션 사용
+                connection.query(sqlquery,prams, function(err, results) 
+                {
+                    if (err) 
+                        throw err;
+                    else 
+                        console.log(results);
+                        res.send(results);
+                });
+                // 커넥션 반환 
+                connection.release();
+            }
+        });
+    }
+})
+
+////////////////////////////////////////////////////////////
+
+
+
+// 로그인 페이지 라우팅
 router.route('/process/login').post(function(req,res){
 
     var pid=req.query.id || req.body.id;
