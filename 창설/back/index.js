@@ -111,6 +111,7 @@ function authUser(id,password,callback){
 var router=express.Router();
 
 var all_img;
+var all_bound;
 var remain_img;
 var random_index1;
 var random_index2;
@@ -118,6 +119,7 @@ var sqlquery;
 var prams=[];
 
 router.route('/start').post(function(req,res){
+    all_bound=[];
     all_img=[1,2,3,4,5,6,7,8];
     remain_img=[];
     prams=[];

@@ -9,6 +9,7 @@ $(document).ready(function(){
     $("#start").on("click",function(){
         $("#menu1 .box").empty();
         $("#menu1 .box").append("<div class='select'></div>");
+        $("#menu1 .select").prepend("<div class='select_head'><h1>장르</h1></div>");
         $("#menu1 .select").append("<div class='select_page' id='left_page'><img id='girl' src='../images/girl/girl.PNG' alt='girl'><h4 id='left_text'>여자 편</h4><div>");
         $("#menu1 .select").append("<div class='select_page' id='right_page'><img id='man' src='../images/man/man.PNG' alt='man'><h4 id='right_text'>남자 편</h4><div>");
         $.ajax({
@@ -24,7 +25,7 @@ $(document).ready(function(){
 
     //여자 편 시작
     $(document).on("click","#girl",function(){
-        $("#menu1 .select").prepend("<div class='select_head'><h1>"+count+"강</h1></div>");
+        $(".select_head h1").text(count+"강");
         $.ajax({
             url:'/start/first',
             dataType:'json',
@@ -69,7 +70,9 @@ $(document).ready(function(){
                         $("#right_page").fadeOut(1500,'swing',function(){
                             $(this).remove();
                         });
-                        $(".select").append('<div class="final_btn"><button type="button" class="btn btn-primary">이상형 생성</button></div>');
+                        setTimeout(function(){
+                            $(".select").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
+                        },1700);
 
                         //id 변경해서 클릭 이번트제거
                         $("#left_girl").attr("id","Win");
@@ -122,7 +125,9 @@ $(document).ready(function(){
                         $("#left_page").fadeOut(1500,'swing',function(){
                             $(this).remove();
                         });
-                        $(".select").append('<div class="final_btn"><button type="button" class="btn btn-primary">이상형 생성</button></div>');
+                        setTimeout(function(){
+                            $(".select").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
+                        },1700);
 
 
                         //id 변경해서 클릭 이번트제거
@@ -153,7 +158,7 @@ $(document).ready(function(){
 
     // 남자 편 시작
     $(document).on("click","#man",function(){
-        $("#menu1 .select").prepend("<div class='select_head'><h1>"+count+"강</h1></div>");
+        $(".select_head h1").text(count+"강");
 
         $.ajax({
             url:'/start/first',
@@ -199,7 +204,9 @@ $(document).ready(function(){
                         $("#right_page").fadeOut(1500,'swing',function(){
                             $(this).remove();
                         });
-                        $(".select").append('<div class="final_btn"><button type="button" class="btn btn-primary">이상형 생성</button></div>');
+                        setTimeout(function(){
+                            $(".select").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
+                        },1700);
 
                         //id 변경해서 클릭 이번트제거
                         $("#left_man").attr("id","Win");
@@ -252,7 +259,9 @@ $(document).ready(function(){
                         $("#left_page").fadeOut(1500,'swing',function(){
                             $(this).remove();
                         });
-                        $(".select").append('<div class="final_btn"><button type="button" class="btn btn-primary">이상형 생성</button></div>');
+                        setTimeout(function(){
+                            $(".select").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
+                        },1700);
 
                         //id 변경해서 클릭 이번트제거
                         $("#left_man").attr("id","Lose");
@@ -278,6 +287,33 @@ $(document).ready(function(){
                 }
             });
         });
+    });
+
+    $(document).on("click",".final_btn #final_btn",function(){
+        $(".select").fadeOut(500,'swing',function(){
+
+            $("#container").css("background-color","white");
+            $(".box").prepend("<div class='roding_page'><img id='roding_img' src='../images/loading.gif' alt='roading'><h3>이상형을 생성중입니다.</h3><div>");
+            setTimeout(function(){
+                $(".select").fadeIn(0,'swing',function(){
+                    $("#container").css("background-color","whitesmoke");
+                    $(".roding_page").remove();
+                    $(".select_head h1").text("나의 이상형");
+                    $(".select_page h4").remove();
+                    $(".select_page").append('<input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input>');
+                    $(".select_page #Win").attr("src","../images/ideal.PNG");
+                    $(".select_page #Win").attr("id","ideal");
+                    $(".final_btn #final_btn").text("이상형 재생성");
+                    $(".final_btn #final_btn").attr("id","create_retry");
+                    $(".final_btn").append('<button id="Ranking registration" type="button" class="btn btn-default">랭킹 등록</button>');
+                });
+            },2000);
+        });
+
+    });
+
+    $(document).on("click","#create_retry",function(){
+       location.reload();
     });
 
 });
