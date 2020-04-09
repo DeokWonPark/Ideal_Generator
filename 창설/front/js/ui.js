@@ -71,7 +71,7 @@ $(document).ready(function(){
                             $(this).remove();
                         });
                         setTimeout(function(){
-                            $(".select").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
+                            $(".select_page").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
                         },1700);
 
                         //id 변경해서 클릭 이번트제거
@@ -126,7 +126,7 @@ $(document).ready(function(){
                             $(this).remove();
                         });
                         setTimeout(function(){
-                            $(".select").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
+                            $(".select_page").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
                         },1700);
 
 
@@ -205,7 +205,7 @@ $(document).ready(function(){
                             $(this).remove();
                         });
                         setTimeout(function(){
-                            $(".select").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
+                            $(".select_page").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
                         },1700);
 
                         //id 변경해서 클릭 이번트제거
@@ -260,7 +260,7 @@ $(document).ready(function(){
                             $(this).remove();
                         });
                         setTimeout(function(){
-                            $(".select").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
+                            $(".select_page").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
                         },1700);
 
                         //id 변경해서 클릭 이번트제거
@@ -300,12 +300,12 @@ $(document).ready(function(){
                     $(".roding_page").remove();
                     $(".select_head h1").text("나의 이상형");
                     $(".select_page h4").remove();
-                    $(".select_page").append('<input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input>');
+                    $(".final_btn").before(
+                    '<form id="rank_form" method="post" action="/process/ranking"><input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input><button id="Ranking registration" type="submit" class="btn btn-default">랭킹 등록</button></form>');
                     $(".select_page #Win").attr("src","../images/ideal.PNG");
                     $(".select_page #Win").attr("id","ideal");
                     $(".final_btn #final_btn").text("이상형 재생성");
                     $(".final_btn #final_btn").attr("id","create_retry");
-                    $(".final_btn").append('<button id="Ranking registration" type="button" class="btn btn-default">랭킹 등록</button>');
                 });
             },2000);
         });

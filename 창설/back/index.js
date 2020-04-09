@@ -113,6 +113,7 @@ var router=express.Router();
 var all_img;
 var all_bound;
 var remain_img;
+var random_index
 var random_index1;
 var random_index2;
 var sqlquery;
@@ -120,7 +121,16 @@ var prams=[];
 
 router.route('/start').post(function(req,res){
     all_bound=[];
-    all_img=[1,2,3,4,5,6,7,8];
+    all_img=[];
+    for(var i=1;i<=16;i++){
+        all_bound.push(i);
+    }
+    for(var i=0;i<8;i++){
+        random_index=Math.floor(Math.random()*all_bound.length);
+        all_img.push(all_bound[random_index]);
+        all_bound.splice(random_index,1);
+    }
+    console.log(all_img);
     remain_img=[];
     prams=[];
 });
@@ -133,9 +143,9 @@ router.route('/start/first').post(function(req,res){
 
     prams.push(all_img[random_index1]);
     all_img.splice(random_index1,1);
-    prams.push(all_img[random_index2]);
+    prams.push(all_img[random_index1]);
     all_img.splice(random_index2,1);
-    prams.sort();
+    prams.sort(function(a,b){return a-b; });
     console.log(prams);
     console.log(all_img);
     
@@ -206,7 +216,7 @@ router.route('/start/first/ing').post(function(req,res){
         all_img.splice(random_index1,1);
         prams.push(all_img[random_index2]);
         all_img.splice(random_index2,1);
-        prams.sort();
+        prams.sort(function(a,b){return a-b; });
         console.log(prams);
         console.log(all_img);
         
@@ -233,7 +243,16 @@ router.route('/start/first/ing').post(function(req,res){
 })
 
 ////////////////////////////////////////////////////////////
-
+router.route('/process/ranking').post(function(req,res){
+    var ideal_name=req.query.name || req.body.name;
+    if(!req.session.user){
+        console.log("로그인이 필요합니다");
+        res.writeHead(200,{'Content-Type':'text/html ; charset=utf-8'});
+        res.write("<h1>로그인을 해야 랭킹을 등록할 수 있습니다.</h1>");
+        res.write("<h4> Login is required.</h4>");
+        res.end();
+    }
+});
 
 
 // 로그인 페이지 라우팅

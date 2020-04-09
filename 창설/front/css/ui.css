@@ -109,9 +109,14 @@ header .head-line h5{margin-left: 200px;}
 #menu1 .select_head{padding: 10px 0px 0px 0px;}
 #menu1 .select_head h1{margin: 10px 0px 0px 0px;}
 #menu1 .select_page #ideal_name{margin-top: 5px; text-align: center;}
+#menu1 .select_page #rank_form{display: inline;}
+#menu1 .select_page #rank_form button{margin-top: 8px; margin-right: 15px;}
 #menu1 .box .roding_page{text-align: center; padding-top: 150px; height: 500px;}
 #menu1 .box .roding_page h3{margin-top: 50px;}
-.final_btn button{margin-right: 15px;}
+
+.final_btn{display: inline-block;}
+.final_btn button{margin-top: 8px;}
+
 /*  footer  */
-footer{ background-color: grey; padding-bottom: 5px;}
+footer{ background-color: grey; padding-bottom: 5px; display: inline-block;}
 footer p{color: white;}
