@@ -19,6 +19,10 @@ app.use(bodyparser.json());
 
 app.use(static(path.join(__dirname,"../front")));
 
+app.get('/',(req,res) => {
+    res.sendFile((path.join(__dirname,"../front"))+"/Worldcup.html");
+});
+
 app.use(cookieparser());
 
 app.use(session({
@@ -65,6 +69,7 @@ var errorhandler=expressErrorHandler({
 
 app.use(expressErrorHandler.httpError(404));
 app.use(errorhandler);
+
 
 http.createServer(app).listen(app.get('port'),function(){
     console.log("server RUN : "+app.get('port'));
