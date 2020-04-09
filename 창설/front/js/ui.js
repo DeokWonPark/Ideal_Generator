@@ -2,8 +2,92 @@ $(document).ready(function(){
 
     var count=8;
     var count_v=count;
-    var left_page="";
-    var right_page="";
+
+    function worldcup_start(url,gender){
+        $(".select_head h1").text(count+"강");
+        $.ajax({
+            url:url,
+            dataType:'json',
+            type:'POST',
+            data:{pos:gender},
+            success:function(result){
+                $("#girl").attr("src",result[0].img_path);
+                $("#girl").attr("id","left_"+gender);
+                $(".select_page #left_text").text(result[0].name);
+
+                $("#man").attr("src",result[1].img_path);
+                $("#man").attr("id","right_"+gender);
+                $(".select_page #right_text").text(result[1].name);
+            }
+        });
+    }
+
+    function worldcup(url,gender,pos){
+        var wid="#"+pos+"_"+gender;
+        var lid;
+        var pos_rev;
+        if(pos==="left"){
+            pos_rev="right";
+        }
+        else{
+            pos_rev="left";
+        }
+
+        lid="#"+pos_rev+"_"+gender;
+
+        $(wid).animate({
+            width: "100%",
+            height: "100%",
+            opacity: 0.5
+          },
+          1000,function() {
+            $(wid).animate({
+                width: "300px",
+                height: "400px",
+                opacity: 1.0
+              },
+              0);
+
+              $.ajax({
+                url:url,
+                dataType:'json',
+                type:'POST',
+                data:{pos:pos},
+                success:function(result){
+                    if(result.status==='final'){
+                        $(".select_head h1").text("우승");
+                        $("#"+pos_rev+"_page").fadeOut(1500,'swing',function(){
+                            $(this).remove();
+                        });
+                        setTimeout(function(){
+                            $(".select_page").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
+                        },1700);
+
+                        //id 변경해서 클릭 이번트제거
+                        $(wid).attr("id","Win");
+                        $(lid).attr("id","Lose");
+                    }
+                    else{
+                        $("#left_"+gender).attr("src",result[0].img_path);
+                        $(".select_page #left_text").text(result[0].name);
+                        
+                        $("#right_"+gender).attr("src",result[1].img_path);
+                        $(".select_page #right_text").text(result[1].name);
+                        
+                        count_v=count_v-2;
+                        if(count_v==0){
+                            count=count/2;
+                            count_v=count;
+                            if(count==2)
+                                $(".select_head h1").text("결승전");
+                            else
+                                $(".select_head h1").text(count+"강");
+                        }
+                    }
+                }
+            });
+        });
+    }
 
     // 첫 Start버튼 클릭 시
     $("#start").on("click",function(){
@@ -17,278 +101,45 @@ $(document).ready(function(){
             dataType:'json',
             type:'POST',
             data:{result:true},
-            success:function(result){
-
-            }
         });
     });
-
+//////////////////////////////
     //여자 편 시작
     $(document).on("click","#girl",function(){
-        $(".select_head h1").text(count+"강");
-        $.ajax({
-            url:'/start/first',
-            dataType:'json',
-            type:'POST',
-            data:{pos:'girl'},
-            success:function(result){
-                $("#girl").attr("src",result[0].img_path);
-                $("#girl").attr("id","left_girl");
-                $(".select_page #left_text").text(result[0].name);
-                left_page=result[0].name;
-                $("#man").attr("src",result[1].img_path);
-                $("#man").attr("id","right_girl");
-                $(".select_page #right_text").text(result[1].name);
-                right_page=result[1].name;
-            }
-        });
+        worldcup_start('/start/first','girl');
     });
 
     //여자 편
     $(document).on("click","#left_girl",function(){
-        $("#left_girl").animate({
-            width: "100%",
-            height: "100%",
-            opacity: 0.5
-          },
-          1000,function() {
-            $("#left_girl").animate({
-                width: "300px",
-                height: "400px",
-                opacity: 1.0
-              },
-              0);
-
-              $.ajax({
-                url:'/start/first/ing',
-                dataType:'json',
-                type:'POST',
-                data:{pos:'left'},
-                success:function(result){
-                    if(result.status==='final'){
-                        $(".select_head h1").text("우승");
-                        $("#right_page").fadeOut(1500,'swing',function(){
-                            $(this).remove();
-                        });
-                        setTimeout(function(){
-                            $(".select_page").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
-                        },1700);
-
-                        //id 변경해서 클릭 이번트제거
-                        $("#left_girl").attr("id","Win");
-                        $("#right_girl").attr("id","Lose");
-                    }
-                    else{
-                        $("#left_girl").attr("src",result[0].img_path);
-                        $(".select_page #left_text").text(result[0].name);
-                        left_page=result[0].name;
-                        $("#right_girl").attr("src",result[1].img_path);
-                        $(".select_page #right_text").text(result[1].name);
-                        right_page=result[1].name;
-                        count_v=count_v-2;
-                        if(count_v==0){
-                            count=count/2;
-                            count_v=count;
-                            if(count==2)
-                                $(".select_head h1").text("결승전");
-                            else
-                                $(".select_head h1").text(count+"강");
-                        }
-                    }
-                }
-            });
-        });
+        worldcup('/start/first/ing',"girl","left");
     });
 
     $(document).on("click","#right_girl",function(){
-        $("#right_girl").animate({
-            width: "100%",
-            height: "100%",
-            opacity: 0.5
-          },
-          1000,function() {
-            $("#right_girl").animate({
-                width: "300px",
-                height: "400px",
-                opacity: 1.0
-              },
-              0);
-
-              $.ajax({
-                url:'/start/first/ing',
-                dataType:'json',
-                type:'POST',
-                data:{pos:'right'},
-                success:function(result){
-                    if(result.status==='final'){
-                        $(".select_head h1").text("우승");
-                        $("#left_page").fadeOut(1500,'swing',function(){
-                            $(this).remove();
-                        });
-                        setTimeout(function(){
-                            $(".select_page").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
-                        },1700);
-
-
-                        //id 변경해서 클릭 이번트제거
-                        $("#left_girl").attr("id","Lose");
-                        $("#right_girl").attr("id","Win");
-                    }
-                    else{
-                        $("#left_girl").attr("src",result[0].img_path);
-                        $(".select_page #left_text").text(result[0].name);
-                        left_page=result[0].name;
-                        $("#right_girl").attr("src",result[1].img_path);
-                        $(".select_page #right_text").text(result[1].name);
-                        right_page=result[1].name;
-                        count_v=count_v-2;
-                        if(count_v==0){
-                            count=count/2;
-                            count_v=count;
-                            if(count==2)
-                                $(".select_head h1").text("결승전");
-                            else
-                                $(".select_head h1").text(count+"강");
-                        }
-                    }
-                }
-            });
-        });
+        worldcup('/start/first/ing',"girl","right");
     });
+///////////////////////////////////////////////////
+
 
     // 남자 편 시작
     $(document).on("click","#man",function(){
-        $(".select_head h1").text(count+"강");
-
-        $.ajax({
-            url:'/start/first',
-            dataType:'json',
-            type:'POST',
-            data:{pos:'man'},
-            success:function(result){
-                $("#girl").attr("src",result[0].img_path);
-                $("#girl").attr("id","left_man");
-                $(".select_page #left_text").text(result[0].name);
-                left_page=result[0].name;
-                $("#man").attr("src",result[1].img_path);
-                $("#man").attr("id","right_man");
-                $(".select_page #right_text").text(result[1].name);
-                right_page=result[1].name;
-            }
-        });
+        worldcup_start('/start/first','man');
     });
 
     //남자 편
     $(document).on("click","#left_man",function(){
-        $("#left_man").animate({
-            width: "100%",
-            height: "100%",
-            opacity: 0.5
-          },
-          1000,function() {
-            $("#left_man").animate({
-                width: "300px",
-                height: "400px",
-                opacity: 1.0
-              },
-              0);
-
-              $.ajax({
-                url:'/start/first/ing',
-                dataType:'json',
-                type:'POST',
-                data:{pos:'left'},
-                success:function(result){
-                    if(result.status==='final'){
-                        $(".select_head h1").text("우승");
-                        $("#right_page").fadeOut(1500,'swing',function(){
-                            $(this).remove();
-                        });
-                        setTimeout(function(){
-                            $(".select_page").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
-                        },1700);
-
-                        //id 변경해서 클릭 이번트제거
-                        $("#left_man").attr("id","Win");
-                        $("#right_man").attr("id","Lose");
-                    }
-                    else{
-                        $("#left_man").attr("src",result[0].img_path);
-                        $(".select_page #left_text").text(result[0].name);
-                        left_page=result[0].name;
-                        $("#right_man").attr("src",result[1].img_path);
-                        $(".select_page #right_text").text(result[1].name);
-                        right_page=result[1].name;
-                        count_v=count_v-2;
-                        if(count_v==0){
-                            count=count/2;
-                            count_v=count;
-                            if(count==2)
-                                $(".select_head h1").text("결승전");
-                            else
-                                $(".select_head h1").text(count+"강");
-                        }
-                    }
-                }
-            });
-        });
+        worldcup('/start/first/ing',"man","left");
     });
 
     $(document).on("click","#right_man",function(){
-        $("#right_man").animate({
-            width: "100%",
-            height: "100%",
-            opacity: 0.5
-          },
-          1000,function() {
-            $("#right_man").animate({
-                width: "300px",
-                height: "400px",
-                opacity: 1.0
-              },
-              0);
-
-              $.ajax({
-                url:'/start/first/ing',
-                dataType:'json',
-                type:'POST',
-                data:{pos:'right'},
-                success:function(result){
-                    if(result.status==='final'){
-                        $(".select_head h1").text("우승");
-                        $("#left_page").fadeOut(1500,'swing',function(){
-                            $(this).remove();
-                        });
-                        setTimeout(function(){
-                            $(".select_page").append('<div class="final_btn"><button id="final_btn" type="button" class="btn btn-primary">이상형 생성</button></div>');
-                        },1700);
-
-                        //id 변경해서 클릭 이번트제거
-                        $("#left_man").attr("id","Lose");
-                        $("#right_man").attr("id","Win");
-                    }
-                    else{
-                        $("#left_man").attr("src",result[0].img_path);
-                        $(".select_page #left_text").text(result[0].name);
-                        left_page=result[0].name;
-                        $("#right_man").attr("src",result[1].img_path);
-                        $(".select_page #right_text").text(result[1].name);
-                        right_page=result[1].name;
-                        count_v=count_v-2;
-                        if(count_v==0){
-                            count=count/2;
-                            count_v=count;
-                            if(count==2)
-                                $(".select_head h1").text("결승전");
-                            else
-                                $(".select_head h1").text(count+"강");
-                        }
-                    }
-                }
-            });
-        });
+        worldcup('/start/first/ing',"man","right");
     });
 
+
+////////////////////////////////////////////////////////
+
+
+
+    // 마지막 이상형 생성 부분
     $(document).on("click",".final_btn #final_btn",function(){
         $(".select").fadeOut(500,'swing',function(){
 
@@ -320,6 +171,7 @@ $(document).ready(function(){
 
     });
 
+    //이상형 재 생성
     $(document).on("click","#create_retry",function(){
        location.reload();
     });
