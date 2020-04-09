@@ -302,8 +302,16 @@ $(document).ready(function(){
                     $(".select_page h4").remove();
                     $(".final_btn").before(
                     '<form id="rank_form" method="post" action="/process/ranking"><input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input><button id="Ranking registration" type="submit" class="btn btn-default">랭킹 등록</button></form>');
-                    $(".select_page #Win").attr("src","../images/ideal.PNG");
-                    $(".select_page #Win").attr("id","ideal");
+                    $.ajax({
+                        url:'/start/end',
+                        dataType:'json',
+                        type:'POST',
+                        data:{},
+                        success:function(result){
+                            $(".select_page #Win").attr("src",result[0].img_path);
+                            $(".select_page #Win").attr("id","ideal");
+                        }
+                    })
                     $(".final_btn #final_btn").text("이상형 재생성");
                     $(".final_btn #final_btn").attr("id","create_retry");
                 });

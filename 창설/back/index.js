@@ -42,6 +42,7 @@ var pool=mysql.createPool({
 
 var sqlgirlimg = 'SELECT name, img_path FROM girl WHERE id=? OR id=?';
 var sqlmanimg = 'SELECT name, img_path FROM man WHERE id=? OR id=?';
+var sqlidealimg= 'SELECT name, img_path FROM ideal WHERE id=?';
 
 ////////////////////////////////////////////////////////////////
 // 회원추가 
@@ -143,7 +144,7 @@ router.route('/start/first').post(function(req,res){
 
     prams.push(all_img[random_index1]);
     all_img.splice(random_index1,1);
-    prams.push(all_img[random_index1]);
+    prams.push(all_img[random_index2]);
     all_img.splice(random_index2,1);
     prams.sort(function(a,b){return a-b; });
     console.log(prams);
@@ -242,6 +243,31 @@ router.route('/start/first/ing').post(function(req,res){
     }
 })
 
+
+// 월드컵이 끝나고 이상형 생성
+router.route('/start/end').post(function(req,res){
+
+    var param=1;
+    pool.getConnection( function(err, connection) 
+        {  
+            if (err) 
+                throw err;
+            else 
+            {
+                // 커넥션 사용
+                connection.query(sqlidealimg,param, function(err, results) 
+                {
+                    if (err) 
+                        throw err;
+                    else 
+                        console.log(results);
+                        res.send(results);
+                });
+                // 커넥션 반환 
+                connection.release();
+            }
+        });
+})
 ////////////////////////////////////////////////////////////
 router.route('/process/ranking').post(function(req,res){
     var ideal_name=req.query.name || req.body.name;
