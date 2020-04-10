@@ -46,6 +46,8 @@ var pool=mysql.createPool({
 
 var worldcup=require('./routes/worldcup');
 var user=require('./routes/user');
+var ranking=require('./routes/ranking');
+ranking.init(app);
 worldcup.init(pool);
 user.init(pool);
 

@@ -77,9 +77,8 @@ header .head-line h5{margin-left: 200px;}
     background-color: whitesmoke;
     margin: 7% 7% 3.5% 7%;
     border-radius: 15px;
-    min-width: 400px; min-height: 500px;
 }
-#container #menu1{min-width: 400px; min-height: 500px; width: 100%; height: 100%;}
+#container #menu1{ width: 100%; height: 100%;}
 
 #container .main_box{text-align: center;}
 #container .main_box h2
@@ -91,10 +90,10 @@ header .head-line h5{margin-left: 200px;}
 }
 #container .main_box p{font-size: 20px; margin: 0px 0px 30px 50px;}
 
-#container .main_box .main_img_box img{ width: 100%; height: 100%; max-width: 500px; max-height: 550px; min-width: 200px;min-height: 250px;}
+#container .main_box .main_img_box img{ width: 100%; height: 100%; max-width: 500px; max-height: 550px;}
 #container .button_box{ text-align: center; padding: 5% 25% 5% 25%;}
 
-#menu1 .select{height: 600px; text-align: center;}
+#menu1 .select{min-height: 600px; text-align: center;}
 #menu1 .select_page
 {
     width: 400px;
