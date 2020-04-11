@@ -2,14 +2,81 @@ $(document).ready(function(){
 
     var count=8;
     var count_v=count;
+    
+    //////////////////////////////////////////////////////////
+    // 이상형 월드컵 로직
+    var all_img;
+    var all_bound;
+    var remain_img;
+    var random_index
+    var random_index1;
+    var random_index2;
+    var prams=[];
+    var final=false;
 
+    function start(){
+        all_bound=[];
+        all_img=[];
+        for(var i=1;i<=16;i++){
+            all_bound.push(i);
+        }
+        for(var i=0;i<8;i++){
+            random_index=Math.floor(Math.random()*all_bound.length);
+            all_img.push(all_bound[random_index]);
+            all_bound.splice(random_index,1);
+        }
+        console.log(all_img);
+        remain_img=[];
+        prams=[];
+    }
+
+    function start_first(pos){
+        if(pos==='left'){
+            remain_img.push(prams[0]);
+        }
+        else if(pos==='right'){
+            remain_img.push(prams[1]);
+        }
+        prams=[];
+        if(all_img.length===0 && remain_img.length===1){
+            final=true;
+        }
+        else{
+            if(all_img.length==0){
+                for (i of remain_img){
+                    all_img.push(i);
+                }
+                remain_img=[];
+            }
+    
+            random_index1=Math.floor(Math.random()*all_img.length);
+            random_index2=Math.floor(Math.random()*(all_img.length-1));
+    
+            prams.push(all_img[random_index1]);
+            all_img.splice(random_index1,1);
+            prams.push(all_img[random_index2]);
+            all_img.splice(random_index2,1);
+            prams.sort(function(a,b){return a-b;});
+            console.log("par  "+prams);
+            console.log("all  "+all_img);
+            console.log("remain  "+remain_img);
+        }
+        
+    }
+
+    //////////////////////////////////////////////////////////////
+
+    ///////////////////////////////////////////////////////////////////
+    // 이상형 월드컵 동작 함수
     function worldcup_start(url,gender){
         $(".select_head h1").text(count+"강");
+        start_first(null);
+        console.log("prams:" +prams[0]);
         $.ajax({
             url:url,
             dataType:'json',
             type:'POST',
-            data:{pos:gender},
+            data:{pos:gender,pram1:prams[0],pram2:prams[1]},
             success:function(result){
                 $("#girl").attr("src",result[0].img_path);
                 $("#girl").attr("id","left_"+gender);
@@ -34,6 +101,7 @@ $(document).ready(function(){
         }
 
         lid="#"+pos_rev+"_"+gender;
+        start_first(pos);
 
         $(wid).animate({
             width: "100%",
@@ -52,9 +120,9 @@ $(document).ready(function(){
                 url:url,
                 dataType:'json',
                 type:'POST',
-                data:{pos:pos},
+                data:{pos:gender,pram1:prams[0],pram2:prams[1]},
                 success:function(result){
-                    if(result.status==='final'){
+                    if(final==true){
                         $(".select_head h1").text("우승");
                         $("#"+pos_rev+"_page").fadeOut(1500,'swing',function(){
                             $(this).remove();
@@ -89,6 +157,8 @@ $(document).ready(function(){
         });
     }
 
+    ///////////////////////////////////////////////////
+
     // 첫 Start버튼 클릭 시
     $("#start").on("click",function(){
         $("#menu1 .box").empty();
@@ -96,12 +166,7 @@ $(document).ready(function(){
         $("#menu1 .select").prepend("<div class='select_head'><h1>장르</h1></div>");
         $("#menu1 .select").append("<div class='select_page' id='left_page'><img id='girl' src='../images/girl/girl.PNG' alt='girl'><h4 id='left_text'>여자 편</h4><div>");
         $("#menu1 .select").append("<div class='select_page' id='right_page'><img id='man' src='../images/man/man.PNG' alt='man'><h4 id='right_text'>남자 편</h4><div>");
-        $.ajax({
-            url:'/start',
-            dataType:'json',
-            type:'POST',
-            data:{result:true},
-        });
+        start();
     });
 //////////////////////////////
     //여자 편 시작
@@ -111,11 +176,11 @@ $(document).ready(function(){
 
     //여자 편
     $(document).on("click","#left_girl",function(){
-        worldcup('/start/first/ing',"girl","left");
+        worldcup('/start/first',"girl","left");
     });
 
     $(document).on("click","#right_girl",function(){
-        worldcup('/start/first/ing',"girl","right");
+        worldcup('/start/first',"girl","right");
     });
 ///////////////////////////////////////////////////
 
@@ -127,11 +192,11 @@ $(document).ready(function(){
 
     //남자 편
     $(document).on("click","#left_man",function(){
-        worldcup('/start/first/ing',"man","left");
+        worldcup('/start/first',"man","left");
     });
 
     $(document).on("click","#right_man",function(){
-        worldcup('/start/first/ing',"man","right");
+        worldcup('/start/first',"man","right");
     });
 
 
