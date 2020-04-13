@@ -45,7 +45,7 @@ header nav
     margin-bottom: 0px;
     display: block;
     height: auto;
-    padding-bottom: 0;
+    padding-bottom: 2;
     overflow: visible;
     float: right;
 }
@@ -55,6 +55,7 @@ header .logo_box  img
     float: left;
     height: 60px;
 }
+/* #wrap header nav .nav_top-link_nav-right{ text-align: right; height: 100%;} */
 #wrap header nav .nav_top-link_nav-right{ text-align: right; height: 100%;}
 #wrap header nav ul li{height: 100%;margin:10px 10px 10px 30px;}
 #wrap header nav ul li .profile img{width: 30px; height: 30px; margin: 0px 10px 0px 0px ;}
@@ -66,7 +67,7 @@ header .head-line
    text-align: center;
    box-sizing: border-box;
    display: block;
-   margin-top: 180px;
+   margin-top: 130px;
 }
 header .head-line h1{font-size: 50px;}
 header .head-line h5{margin-left: 200px;}
