@@ -1,0 +1,72 @@
+/*header*/
+
+header
+{
+    background-color:white;
+    padding-top: 1px;
+    height: 100px;
+    display: block;
+}
+header nav
+{   
+    position:fixed;
+    background-color: #737;
+    border:1px solid #737;
+    width: 100%;
+    margin-bottom: 0px;
+    display: block;
+    height: auto;
+    padding-bottom: 2;
+    overflow: visible;
+    float: right;
+}
+header nav .nav_top_link_nav-center{
+    position: absolute;
+    left : 800px;
+    top : 10px;
+}
+
+header nav .nav_top_link_nav-center span{
+    padding: 10px;
+    font-size : 19px;
+    color: whitesmoke;
+}
+header .logo_box  img
+{
+    width: 130px;
+    float: left;
+    height: 60px;
+}
+header nav .nav_top-link_nav-right{ position : relative; float: right; text-align: right; height: 100%;}
+header nav ul li{height: 100%;margin:10px 10px 10px 30px;}
+header nav ul li .profile img{width: 30px; height: 30px; margin: 0px 10px 0px 0px ;}
+header nav ul li a{color: black; height: 100%; font-size: 16px;font-weight:600; line-height:30px;}
+header nav ul li:hover a{color: skyblue;}
+
+
+
+/*body*/
+
+.table{
+    border : 1px solid #444444;
+    background-color: #EBEEF5;
+    width : 400px;
+}
+.table .table_header th{
+    text-align: center;
+    color : purple;
+}
+.character_head{
+    text-align: center;
+}
+.character_img{
+    text-align: center;
+    width : 150px;
+    padding : 2;
+    margin : 2;
+    border : 1 solid color red;
+}
+.character_info{
+    width : 200px;
+}
+
