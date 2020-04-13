@@ -89,13 +89,29 @@ function login(req,res){
                 }
                 if(rows){
                     console.dir(rows);
+                    req.session.user={
+                        id:pid,
+                        authorized:true,
+                    }
     
-                    var username=rows[0].name;
-                    res.writeHead(200,{'Content-Type':'text/html ; charset=utf-8'});
-                        res.write("<h1>로그인 성공</h1>");
-                        res.write("<div><p>사용자 이름 : "+username+"</p></div>");
-                        res.write("<div><p>사용자 아이디 : "+pid+"</p></div>");
-                        res.end();
+                    var name=rows[0].nickname;
+                    var context={userid:pid,username:name};
+
+                    req.app.render('Worldcup',context,function(err,html){
+                        if(err){
+                            console.error('뷰 렌더링 중 에러발생: '+err.stack);
+                            res.writeHead(200,{'Content-Type':'text/html ; charset=utf-8'});
+                            res.write('<h2>뷰 렌더링 중 에러발생</h2>');
+                            res.write("<p>"+err.stack+"</p>");
+                            res.end();
+
+                            return;
+                        }
+
+                        console.log('rendered: '+html);
+                        res.end(html);
+                    });
+                    
                 }
             })
         }
@@ -172,6 +188,8 @@ function logout(req,res){
         res.redirect('/login.html');
     }
 }
+
+
 
 module.exports.init=init;
 module.exports.login=login;

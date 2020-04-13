@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     var count=8;
     var count_v=count;
     
@@ -224,8 +223,10 @@ $(document).ready(function(){
                         type:'POST',
                         data:{},
                         success:function(result){
+                            final_path=result[0].img_path;
                             $(".select_page #Win").attr("src",result[0].img_path);
                             $(".select_page #Win").attr("id","ideal");
+                            $("#ideal").attr('src',result[0].img_path);
                         }
                     })
                     $(".final_btn #final_btn").text("이상형 재생성");
@@ -233,7 +234,6 @@ $(document).ready(function(){
                 });
             },2000);
         });
-
     });
 
     //이상형 재 생성

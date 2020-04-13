@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="shortcut icon" href="images/favicon-16x16.png">
     <link rel="icon" href="images/favicon-16x16.png">
+    <script src=".\lib\kakao.js"></script>
+    <script>
+        Kakao.init('1d49add348926bb539885c56954b946a');
+    </script>
 </head>
 <body>
 
@@ -18,7 +22,7 @@
             <ul class="nav_top-link_nav-right">
                 <li>
                     <strong class="profile"><img src="images/Login.PNG" alt="profile"></strong>
-                    <a href="adduser.html">
+                    <a href="adduser">
                         회원가입
                     </a>
                 </li>
@@ -58,12 +62,17 @@
                         <button type="submit" class="btn btn-default">Sign in</button>
                       </div>
                     </div>
+                    <!-- <button type="text" id="kakao" class="btn btn-default">카카오</button> -->
                   </form>
             </div>
 
         </div>
         
     </div>
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="./lib/jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+      // $("#kakao").click()
+    </script>
 </body>
 </html>
