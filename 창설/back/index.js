@@ -31,6 +31,10 @@ app.get('/adduser',(req,res) => {
     res.sendFile((path.join(__dirname,"../front"))+"/adduser.html");
 });
 
+app.get('/rank',(req,res) => {
+    res.sendFile((path.join(__dirname,"../front"))+"/rank_page.html");
+});
+
 app.set('views',__dirname+'/views');
 app.set('view engine', 'ejs');
 

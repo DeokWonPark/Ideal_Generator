@@ -4,8 +4,8 @@ function init(pool_){
     pool=pool_;
 }
 
-var sqlgirlimg = 'SELECT name, img_path FROM girl WHERE id=? OR id=?';
-var sqlmanimg = 'SELECT name, img_path FROM man WHERE id=? OR id=?';
+var sqlgirlimg = 'SELECT name, img_path FROM girl_gif WHERE id=? OR id=?';
+var sqlmanimg = 'SELECT name, img_path FROM man_gif WHERE id=? OR id=?';
 var sqlidealimg= 'SELECT name, img_path FROM ideal WHERE id=?';
 
 var sqlquery;
