@@ -12,6 +12,7 @@
     <script src=".\lib\kakao.js"></script>
     <script>
         Kakao.init('1d49add348926bb539885c56954b946a');
+        console.log(Kakao.isInitialized());
     </script>
 </head>
 <body>
@@ -60,10 +61,14 @@
                     <div class="form-group">
                       <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-default">Sign in</button>
+                        <img
+                          src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+                          width="170" id="kakao"
+                        />
                       </div>
                     </div>
-                    <!-- <button type="text" id="kakao" class="btn btn-default">카카오</button> -->
                   </form>
+                  <button type="text" id="test">s fdsfin</button>
             </div>
 
         </div>
@@ -72,7 +77,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="./lib/jQuery/jquery-3.4.1.min.js"></script>
     <script>
-      // $("#kakao").click()
+      $("#kakao").click(function(){
+        Kakao.Auth.authorize({
+          redirectUri: 'http://localhost:3000/oauth'
+        });
+      })
     </script>
 </body>
 </html>

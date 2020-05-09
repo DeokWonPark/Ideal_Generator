@@ -70,8 +70,9 @@ header .logo_box  img
     float: left;
     height: 60px;
 }
-#wrap header nav .nav_top-link_nav-right{ position : relative; float: right; text-align: right; height: 100%;top: 4px;}
-#wrap header nav ul li{height: 100%;margin:10px 10px 10px 30px;}
+#wrap header nav .nav_top-link_nav-right{ position : relative; float: right; text-align: right; height: 100%;top: 4px;margin-top: 10px;}
+#wrap header nav ul li{height: 100%;margin:10px 0px 10px 0px; display: inline;}
+#wrap header nav ul li #nickname{padding-top: 10px;}
 #wrap header nav ul li .profile img{width: 30px; height: 30px; margin: 0px 10px 0px 0px ;}
 #wrap header nav ul li a{color: black; height: 100%; font-size: 16px;font-weight:600; line-height:30px;}
 #wrap header nav ul li:hover a{color: skyblue;}
@@ -85,6 +86,7 @@ header .head-line
 }
 header .head-line h1{font-size: 50px;}
 header .head-line h5{margin-left: 200px;}
+.nav_top-link_nav-right a{display: inline; margin-right: 10px; color: black;}
 
 /*   container   */
 #container

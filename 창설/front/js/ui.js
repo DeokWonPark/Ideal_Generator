@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     var count=8;
     var count_v=count;
@@ -240,5 +241,22 @@ $(document).ready(function(){
     $(document).on("click","#create_retry",function(){
        location.reload();
     });
+ 
+    // 로그인시 쿠키 처리
+    var user_cookie=$.cookie('user');
+    var index_s=user_cookie.indexOf("nickname")+11;
+    var index_e=user_cookie.indexOf("authorized")-3;
+    var user_nickname="";
+    for(var i=index_s;i<index_e;i++){
+        user_nickname+=user_cookie[i];
+    }
+    console.log(user_nickname);
+    
+
+    if(user_cookie){
+        $("#auth").text("Logout");
+        $("#auth").attr("href","/process/logout");
+        $("#nickname").text(user_nickname+" 님");
+    }
 
 });

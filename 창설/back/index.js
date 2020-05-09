@@ -35,6 +35,10 @@ app.get('/rank',(req,res) => {
     res.sendFile((path.join(__dirname,"../front"))+"/rank_page.html");
 });
 
+app.get('/mypage',(req,res) => {
+    res.sendFile((path.join(__dirname,"../front"))+"/mypage.html");
+});
+
 app.set('views',__dirname+'/views');
 app.set('view engine', 'ejs');
 
@@ -63,6 +67,14 @@ var worldcup=require('./routes/worldcup');
 var user=require('./routes/user');
 worldcup.init(pool);
 user.init(pool);
+/////////////////////////////////////////////////////////////
+// var {PythonShell}  = require('python-shell');
+// console.dir(PythonShell);
+
+// PythonShell.run('test1.py', null, (err, results) => {
+//   if (err) throw err;
+//   console.log('results: ${results}');
+// });
 
 ////////////////////////////////////////////////////////////////
 
@@ -71,6 +83,14 @@ var router=express.Router();
 
 var route_loader=require('./routes/route_loader');
 route_loader.init(app,router);
+
+router.route('/oauth').get(function(req,res){
+    console.log(req);
+    res.cookie('user', req.session.cookie
+    )
+
+    res.redirect("/");
+});
 
 
 app.use('/',router);
