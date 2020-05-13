@@ -1,0 +1,173 @@
+@charset "utf-8";
+@import url(https://cdn.rawgit.com/theeluwin/NotoSansKR-Hestia/master/stylesheets/NotoSansKR-Hestia.css);
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, button, abbr, acronym, address, code, del, 
+dfn, em, img, strong, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, 
+td, hr{margin:0;padding:0;font-size:100%;box-sizing: border-box;}
+body{height:100%;min-height:100%;font-family:'Noto Sans Korean','Malgun Gothic','맑은고딕','돋움',dotum, sans-serif;font-size:16px;color:#737373;line-height:1.5;background:url(../images/content_bg4.png) repeat;}
+h1, h2, h3, h4, h5, h6 {font-weight:normal}
+ol, ul, li {list-style:none}
+table {width:100%; border-collapse:collapse;border-spacing:0}
+form, fieldset, iframe {display:block;border:0}
+img, button {border:0 none;vertical-align:top;}
+hr {height:0; display:none}
+i, em, address{font-style:normal}
+label, button{cursor:pointer}
+blockquote, q {quotes:none}
+caption, legend {overflow:hidden;visibility:hidden;position:absolute;width:0;height:0;padding:0;margin:0;font-size:0;text-indent:-100%;white-space:nowrap;z-index:-1}
+header, footer, section, article, aside, nav, hgroup, details, menu, figure, figcaption {display:block;box-sizing: border-box;}
+input, textarea, select, button {font-family:'Noto Sans Korean','Malgun Gothic','맑은고딕','돋움',dotum, sans-serif;font-size:16px;color:#919090;line-height:1.5;letter-spacing:0;vertical-align:middle; border:none;}
+input, textarea {margin:0;padding:0;  background:none; box-sizing:border-box;}
+textarea {resize:none}
+a {color:#919090;text-decoration:none}
+a:link, a:visited {text-decoration:none}
+a:hover {text-decoration:none}
+.blind{display: none;overflow: hidden;position: absolute;width: 0;height: 0;padding: 0;margin: 0; font-size: 0;line-height: 0; text-indent: -9999em;visibility: hidden;outline: none;z-index: -1;}
+/* html,body{overflow:hidden;height:100%;} */
+ /*     header     */
+#wrap
+{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+#wrap > h1{font-size: 0;}
+header
+{
+    background-color:whitesmoke;
+    padding-top: 1px;
+    height: 400px;
+    display: block;
+}
+header nav
+{   
+    position:fixed;
+    background-color: #737;
+    border:1px solid #737;
+    width: 100%;
+    margin-bottom: 0px;
+    display: block;
+    height: auto;
+    padding-bottom: 2;
+    overflow: visible;
+    float: right;
+    z-index: 999;
+}
+header nav .nav_top_link_nav-center{
+    position: absolute;
+    left : 400px;
+    top : 15px;
+}
+
+header nav .nav_top_link_nav-center span{
+    padding: 10px;
+    font-size : 19px;
+    color: whitesmoke;
+}
+header .logo_box  img
+{
+    width: 130px;
+    float: left;
+    height: 60px;
+}
+#wrap header nav .nav_top-link_nav-right{ position : relative; float: right; text-align: right; height: 100%;top: 4px;}
+#wrap header nav ul li{height: 100%;margin:10px 10px 10px 30px;}
+#wrap header nav ul li .profile img{width: 30px; height: 30px; margin: 0px 10px 0px 0px ;}
+#wrap header nav ul li a{color: black; height: 100%; font-size: 16px;font-weight:600; line-height:30px;}
+#wrap header nav ul li:hover a{color: skyblue;}
+
+header .head-line
+{
+   text-align: center;
+   box-sizing: border-box;
+   display: block;
+   margin-top: 180px;
+}
+header .head-line h1{font-size: 50px;}
+header .head-line h5{margin-left: 200px;}
+
+.information_box{
+    width : 1000px;
+    height : 400px;
+    background: #f8f4f4;
+    1position: relative;
+    1padding : 8px 8px;
+    1top:150px;
+    margin-left:auto;
+    margin-right:auto;
+    border: 3px solid purple;
+    
+}
+.information_box .information_box_left{
+    width : 50%;
+    1width : 300px;
+    height : 100%;
+    text-align: center;
+    float : left;
+}
+.information_box .information_box_left .information_img{
+    width : 50%;
+    1width : 300px;
+    height : 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right:auto;
+}
+.information_box .information_box_left .information_img img{
+    border: 3px solid rgb(228, 222, 222);
+    height: calc(100% - 6px);
+    margin: auto;
+}
+
+.information_box .information_box_right{
+    width:50%;
+    height:100%;
+    display : table;
+    1background-color: rgb(86, 107, 43);
+}
+.information_box .information_box_right .information_inf{
+    display: table-cell;
+    vertical-align: middle;
+    1background-color: yellow;
+}
+
+.main_box{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 30px;
+    width:1000px;
+    height: auto;
+    1background-color: red;
+}
+
+#history{
+    text-align: center;
+    font-size: 25px;
+    padding-bottom: 5px;
+}
+
+#test{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 50%;
+    background-color: blue;
+}
+
+#test_image{
+    width: 150px;
+    height: 150px;
+    padding: 18px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#test_info{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#test_info2{
+    margin-top: auto;
+    margin-bottom: auto;
+}
