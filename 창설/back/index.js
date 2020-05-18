@@ -65,8 +65,10 @@ var pool=mysql.createPool({
 
 var worldcup=require('./routes/worldcup');
 var user=require('./routes/user');
+var rank=require('./routes/ranking');
 worldcup.init(pool);
 user.init(pool);
+rank.init(pool);
 /////////////////////////////////////////////////////////////
 // var {PythonShell}  = require('python-shell');
 // console.dir(PythonShell);
@@ -83,14 +85,6 @@ var router=express.Router();
 
 var route_loader=require('./routes/route_loader');
 route_loader.init(app,router);
-
-router.route('/oauth').get(function(req,res){
-    console.log(req);
-    res.cookie('user', req.session.cookie
-    )
-
-    res.redirect("/");
-});
 
 
 app.use('/',router);

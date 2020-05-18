@@ -9,39 +9,124 @@
     <link rel="stylesheet" type="text/css" href="css/rank_page.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="shortcut icon" href="images/favicon-16x16.png">
+    <link rel="icon" href="images/favicon-16x16.png">
+    <link rel="stylesheet" href="css/mypage.css">
     <script src=".\lib\kakao.js"></script>
 </head>
-<header>
-    <nav>
-        <strong class="logo_box"><a href="/"><img src="images/logo_.PNG" alt="Appdo"></a></strong>
-        <div class = "nav_top_link_nav-center">
-            <div class="container">
-                <div class="row">
-                <span class="col">마이페이지</span>
-                
+<section id="wrap">
+    <!-- <h1>이상형 생성 시뮬레이션</h1> -->
+    <header>
+        <!-- <strong class="logo_box"><a href="/"><img src="images/logo_.PNG" alt="Appdo"></a></strong> -->
+        <nav>
+            <strong class="logo_box"><a href="/"><img src="images/logo_.PNG" alt="Appdo"></a></strong>
+            <div class = "nav_top_link_nav-center">
+                <div class="container">
+                    <div class="row">
+                      <span class="col">메뉴1</span>
+                      <span class="col">남자 순위</span>
+                      <span class="col"><a href="/rank" style="color:white">여자 순위</a></span>
+                      <span class="col">메뉴4</span>
+                    </div>
                 </div>
             </div>
+            <ul class="nav_top-link_nav-right">
+                <li>
+                    <strong class="profile"><img id="profile" src="images/Login.PNG" alt="profile"></strong>
+                </li>
+                <li>
+                    <a href="/mypage" id="nickname"></a>
+                    
+                </li>
+                <li>
+                    <a href="/login" id="auth">
+                        Login
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="head-line">
+            <h1>마이 페이지</h1>
+            <h2>얘는 어때?</h2>
+            <h5>Prod by. Appdo</h5>
         </div>
-        <ul class="nav_top-link_nav-right">
-            <li>
-                <strong class="profile"><img id="profile"src="images/Login.PNG" alt="profile"></strong>
-            </li>
-            <li>
-                <a href="/mypage" id="nickname"></a>
-                
-            </li>
-            <li>
-                <a href="/login" id="auth">
-                    Login
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-
+    </header>
+    
+</section>
 
 <body>
-    
+    <div class = information_box>
+        <div class = information_box_left>
+            <div class = information_img>
+                <img src = "./images/no_img.PNG" alt="main_image">
+            </div>
+        </div>
+        <div class = information_box_mid>
+            <div class = information_inf>
+                <p>이름</p><p></p>
+                <br>
+                <p>성별</p>
+                <br>
+                <p>생성일</p>
+                <br>
+                <p>좋아요 0</p>
+                <br>
+                <img src = "./images/like.PNG" height = "30px" >
+
+            </div>
+        </div>
+        <div class = information_box_right>
+            <img src = "./images/iron.PNG">
+            <strong><h4>랭크 Iron</h4></strong>
+        </div>
+        
+        <!-- TODO : 필요한 구성요소가 더 있을 거임. -->
+    </div>
+    <div class = main_box>
+        <div id="history"> history</div>
+        <ul class="test">
+            <li>
+                <img id="test_image" src="./images/gold.PNG" alt="test"/>
+            </li>
+            <li id="test_info">
+                <p>생성날짜</p>
+                <p>좋아요!</p>
+                <p>닮은 연예인</p>
+            </li>
+            <li id="test_info2">
+                <p>좋아요 수</p>
+                <!-- TODO : 좋아요 변화 그래프? -->
+            </li>
+        </ul>
+        <ul class="test">
+            <li>
+                <img id="test_image" src="./images/silver.png" alt="test"/>
+            </li>
+            <li id="test_info">
+                <p>생성날짜</p>
+                <p>좋아요!</p>
+                <p>닮은 연예인</p>
+            </li>
+            <li id="test_info2">
+                <p>좋아요 수</p>
+                <!-- TODO : 좋아요 변화 그래프? -->
+            </li>
+        </ul>
+        <ul class="test">
+            <li>
+                <img id="test_image" src="./images/bronze.png" alt="test"/>
+            </li>
+            <li id="test_info">
+                <p>생성날짜</p>
+                <p>좋아요!</p>
+                <p>닮은 연예인</p>
+            </li>
+            <li id="test_info2">
+                <p>좋아요 수</p>
+                <!-- TODO : 좋아요 변화 그래프? -->
+            </li>
+        </ul>
+    </div>
 
 
 

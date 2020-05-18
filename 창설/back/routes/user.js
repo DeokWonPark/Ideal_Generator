@@ -151,9 +151,7 @@ function signup(req,res){
 
                 var insertid=result.insertId;
                 console.log("추가한 레코드의 아이디 :"+insertid);
-                res.writeHead(200,{'Content-Type':'text/html ; charset=utf-8'});
-                res.write('<h2>사용자 추가성공</h2>');
-                res.end();
+                res.redirect("/");
             }
             else{
                 res.writeHead(200,{'Content-Type':'text/html ; charset=utf-8'});
