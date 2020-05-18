@@ -147,12 +147,13 @@ header .head-line h5{margin-left: 200px;}
     padding-bottom: 5px;
 }
 
-#test{
+.test{
     display: flex;
     justify-content: space-between;
     margin: auto;
     width: 50%;
-    background-color: blue;
+    background: #f8f4f4;
+    border-bottom:1px solid black;
 }
 
 #test_image{
