@@ -1,11 +1,12 @@
-var sqlInsertIdeal="update users set my_ideal=? where name=?;"
+var sqlInsertIdeal="update users set my_ideal=?, ideal_name=? where name=?;"
 var pool;
 
 function init(pool_){
     pool=pool_;
 }
 function ranking(req,res){
-    var ideal_name=req.query.name || req.body.name;
+    var ideal_name=req.query.ideal_name || req.body.ideal_name;
+    console.log(ideal_name);
     if(!req.session.user){
         console.log("로그인 필요");
         console.log(req.session);
@@ -26,7 +27,7 @@ function ranking(req,res){
                 return;
             }
     
-            var data=["../images/ideal/ideal.PNG",req.session.user.name]
+            var data=["../images/ideal/ideal.PNG",ideal_name,req.session.user.name]
             var exec=conn.query(sqlInsertIdeal,data,function(err,result){
                 conn.release();
     
@@ -38,7 +39,7 @@ function ranking(req,res){
                 // callback(null,result);
             });
         })
-        res.redirect("/rank");
+        res.redirect("/mypage");
     }
 }
 

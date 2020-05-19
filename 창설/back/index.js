@@ -55,7 +55,7 @@ app.use(session({
 
 var mysql=require('mysql');
 var pool=mysql.createPool({
-    connectionLimit:10,
+    connectionLimit:20,
     host:'localhost',
     user:'root',
     password:'111111',
@@ -66,9 +66,11 @@ var pool=mysql.createPool({
 var worldcup=require('./routes/worldcup');
 var user=require('./routes/user');
 var rank=require('./routes/ranking');
+var mypage=require('./routes/mypage');
 worldcup.init(pool);
 user.init(pool);
 rank.init(pool);
+mypage.init(pool);
 /////////////////////////////////////////////////////////////
 // var {PythonShell}  = require('python-shell');
 // console.dir(PythonShell);
