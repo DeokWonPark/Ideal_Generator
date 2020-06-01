@@ -10,9 +10,7 @@
     <link rel="shortcut icon" href="images/favicon-16x16.png">
     <link rel="icon" href="images/favicon-16x16.png">
     <script src=".\lib\kakao.js"></script>
-    <script>
-        Kakao.init('1d49add348926bb539885c56954b946a');
-    </script>
+    
 </head>
 <body>
 
@@ -60,9 +58,14 @@
                     <div class="form-group">
                       <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-default">Sign in</button>
+                        <a id="custom-login-btn" href="javascript:loginWithKakao()">
+                          <img
+                            src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+                            width="170"
+                          />
+                        </a>
                       </div>
                     </div>
-                    <!-- <button type="text" id="kakao" class="btn btn-default">카카오</button> -->
                   </form>
             </div>
 
@@ -71,8 +74,8 @@
     </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="./lib/jQuery/jquery-3.4.1.min.js"></script>
-    <script>
-      // $("#kakao").click()
-    </script>
+    <script type="text/javascript" src="./js/login.js"></script>
+    <script src="./lib/carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
+
 </body>
 </html>

@@ -70,8 +70,9 @@ header .logo_box  img
     float: left;
     height: 60px;
 }
-#wrap header nav .nav_top-link_nav-right{ position : relative; float: right; text-align: right; height: 100%;top: 4px;}
-#wrap header nav ul li{height: 100%;margin:10px 10px 10px 30px;}
+#wrap header nav .nav_top-link_nav-right{ position : relative; float: right; text-align: right; height: 100%;top: 4px;margin-top: 10px;}
+#wrap header nav ul li{height: 100%;margin:10px 0px 10px 0px; display: inline;}
+#wrap header nav ul li #nickname{padding-top: 10px;}
 #wrap header nav ul li .profile img{width: 30px; height: 30px; margin: 0px 10px 0px 0px ;}
 #wrap header nav ul li a{color: black; height: 100%; font-size: 16px;font-weight:600; line-height:30px;}
 #wrap header nav ul li:hover a{color: skyblue;}
@@ -85,6 +86,7 @@ header .head-line
 }
 header .head-line h1{font-size: 50px;}
 header .head-line h5{margin-left: 200px;}
+.nav_top-link_nav-right a{display: inline; margin-right: 10px; color: black;}
 
 /*   container   */
 #container
@@ -119,8 +121,12 @@ header .head-line h5{margin-left: 200px;}
     background-color: darkgrey;
     margin: 20px 3% 3px 3%;
 }
+#menu1 .select {padding-bottom: 20px;}
 #menu1 .select img{width: 300px; height: 400px;}
 #menu1 .select h4{margin: 12px; font-size: 18px;}
+#range_left {display: block; margin: 0 auto; margin-top: 20px;}
+#h4-container {display: block; margin: 0 auto;}
+#h4-container h4{left: 50%;}
 #menu1 .select_head{padding: 10px 0px 0px 0px;}
 #menu1 .select_head h1{margin: 10px 0px 0px 0px;}
 #menu1 .select_page #ideal_name{margin-top: 5px; text-align: center;}
@@ -135,3 +141,103 @@ header .head-line h5{margin-left: 200px;}
 /*  footer  */
 footer{ background-color: grey; padding-bottom: 5px; display: inline-block;}
 footer p{color: white;}
+
+
+
+ 
+  html h4:after {
+    padding-left: 1px;
+  }
+  html input[type=range] {
+    outline: 0;
+    border: 0;
+    border-radius: 500px;
+    width: 400px;
+    max-width: 100%;
+    margin: 24px 0 16px;
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    html input[type=range] {
+      overflow: hidden;
+      height: 40px;
+      -webkit-appearance: none;
+      background-color: #ddd;
+    }
+    html input[type=range]::-webkit-slider-runnable-track {
+      height: 40px;
+      -webkit-appearance: none;
+      color: #444;
+      transition: box-shadow 0.2s ease-in-out;
+    }
+    html input[type=range]::-webkit-slider-thumb {
+      width: 40px;
+      -webkit-appearance: none;
+      height: 40px;
+      cursor: ew-resize;
+      background: #fff;
+      box-shadow: -340px 0 0 320px #1597ff, inset 0 0 0 40px #1597ff;
+      border-radius: 50%;
+      transition: box-shadow 0.2s ease-in-out;
+      position: relative;
+    }
+    html input[type=range]:active::-webkit-slider-thumb {
+      background: #fff;
+      box-shadow: -340px 0 0 320px #1597ff, inset 0 0 0 3px #1597ff;
+    }
+  }
+  html input[type=range]::-moz-range-progress {
+    background-color: #43e5f7;
+  }
+  html input[type=range]::-moz-range-track {
+    background-color: #9a905d;
+  }
+  html input[type=range]::-ms-fill-lower {
+    background-color: #43e5f7;
+  }
+  html input[type=range]::-ms-fill-upper {
+    background-color: #9a905d;
+  }
+  
+  #h4-container {
+    width: 400px;
+    max-width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  #h4-container #h4-subcontainer_l , #h4-container #h4-subcontainer_r{
+    width: 100%;
+    position: relative;
+  }
+  #h4-container #h4-subcontainer_l h4 , #h4-container #h4-subcontainer_r h4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    color: #fff !important;
+    font-size: 12px;
+    transform-origin: center -10px;
+    transform: translateX(-50%);
+    transition: margin-top 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  }
+  #h4-container #h4-subcontainer_l h4 span, #h4-container #h4-subcontainer_r h4 span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #1597ff;
+    border-radius: 0 50% 50% 50%;
+    transform: rotate(45deg);
+    z-index: -1;
+  }
+  
+  input:not(:active) + #h4-container h4 {
+    opacity: 0;
+    margin-top: -50px;
+    pointer-events: none;
+  }

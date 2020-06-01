@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="shortcut icon" href="images/favicon-16x16.png">
     <link rel="icon" href="images/favicon-16x16.png">
+    <script src=".\lib\kakao.js"></script>
+   
 </head>
 <body>
     <section id="wrap">
@@ -18,22 +20,28 @@
         <header>
             <!-- <strong class="logo_box"><a href="/"><img src="images/logo_.PNG" alt="Appdo"></a></strong> -->
             <nav>
-                <strong class="logo_box"><a href="Worldcup.html"><img src="images/logo_.PNG" alt="Appdo"></a></strong>
+                <strong class="logo_box"><a href="/"><img src="images/logo_.PNG" alt="Appdo"></a></strong>
 
                 <div class = "nav_top_link_nav-center">
                     <div class="container">
                         <div class="row">
                           <span class="col">메뉴1</span>
                           <span class="col">남자 순위</span>
-                          <span class="col"><a href="rank_page.html" style="color:white">여자 순위</a></span>
+                          <span class="col"><a href="/rank" style="color:white">여자 순위</a></span>
                           <span class="col">메뉴4</span>
                         </div>
                     </div>
                 </div>
                 <ul class="nav_top-link_nav-right">
                     <li>
-                        <strong class="profile"><img src="images/Login.PNG" alt="profile"></strong>
-                        <a href="/login">
+                        <strong class="profile"><img id="profile" src="images/Login.PNG" alt="profile"></strong>
+                    </li>
+                    <li>
+                        <a href="/mypage" id="nickname"></a>
+                        
+                    </li>
+                    <li>
+                        <a href="/login" id="auth">
                             Login
                         </a>
                     </li>
@@ -74,7 +82,9 @@
     </section>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="./lib/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="./lib/carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
     <script type="text/javascript" src="./js/ui.js"></script>
     <script type="text/javascript" src="./js/login.js"></script>
+
 </body>
 </html>

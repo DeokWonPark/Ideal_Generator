@@ -5,5 +5,7 @@ CREATE TABLE `users` (
 `password` varchar(100) NOT NULL,
 `nickname` varchar(100) NOT NULL,
 `gender` varchar(30) NOT NULL,
+`my_ideal` varchar(100) ,
+`ideal_name` varchar(30) ,
   PRIMARY KEY (_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,5 +1,5 @@
 /*header*/
-
+ol, ul, li {list-style:none}
 header
 {
     background-color:white;
@@ -22,8 +22,8 @@ header nav
 }
 header nav .nav_top_link_nav-center{
     position: absolute;
-    left : 800px;
-    top : 10px;
+    left : 400px;
+    top : 15px;
 }
 
 header nav .nav_top_link_nav-center span{
@@ -37,8 +37,9 @@ header .logo_box  img
     float: left;
     height: 60px;
 }
-header nav .nav_top-link_nav-right{ position : relative; float: right; text-align: right; height: 100%;}
-header nav ul li{height: 100%;margin:10px 10px 10px 30px;}
+header nav .nav_top-link_nav-right{ position : relative; float: right; text-align: right; height: 100%;top: 4px;margin-top: 10px;}
+header nav ul li{height: 100%;margin:10px 7px 10px 0px; display: inline;}
+header nav ul li #nickname{padding-top: 10px;}
 header nav ul li .profile img{width: 30px; height: 30px; margin: 0px 10px 0px 0px ;}
 header nav ul li a{color: black; height: 100%; font-size: 16px;font-weight:600; line-height:30px;}
 header nav ul li:hover a{color: skyblue;}
@@ -69,4 +70,8 @@ header nav ul li:hover a{color: skyblue;}
 .character_info{
     width : 200px;
 }
+
+/*  footer  */
+footer{ background-color: grey; padding-bottom: 5px; display: inline-block;}
+footer p{color: white;}
 
