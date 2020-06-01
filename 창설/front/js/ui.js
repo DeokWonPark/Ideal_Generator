@@ -87,10 +87,12 @@ $(document).ready(function(){
                 $(".select_page #right_text").text(result[1].name);
             }
         });
-        $("#left_page").append("<input id='range_left' type='range' min='0' max='100' value='0' step='20'>");
-        $("#left_page").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>0<span></span></h4></div></div>');
-        $("#right_page").append("<input id='range_right' type='range' min='0' max='100' value='0' step='20'>");
-        $("#right_page").append('<div id="h4-container"><div id="h4-subcontainer_r"><h4>0<span></span></h4></div></div>');
+        // $("#left_page").append("<input id='range_left' type='range' min='0' max='100' value='0' step='20'>");
+        // $("#left_page").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>0<span></span></h4></div></div>');
+        // $("#right_page").append("<input id='range_right' type='range' min='0' max='100' value='0' step='20'>");
+        // $("#right_page").append('<div id="h4-container"><div id="h4-subcontainer_r"><h4>0<span></span></h4></div></div>');
+        $(".select").append("<input id='range_left' type='range' min='0' max='100' value='50' step='10'>");
+        $(".select").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>50<span></span></h4></div></div>');
     }
     $(document).on("change input","#range_left",function(){
         $(function() {
@@ -103,26 +105,13 @@ $(document).ready(function(){
         });
     });
     
-    $(document).on("change input","#range_right",function(){
-        $(function() {
-            var rangePercent = $('[id="range_right"]').val();
-            $('#h4-subcontainer_r h4').html(rangePercent+'<span></span>');
-            $('[id="range_right"], h4>span').css('filter', 'hue-rotate(-' + rangePercent + 'deg)');
-            // $('h4').css({'transform': 'translateX(calc(-50% - 20px)) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
-            $('#h4-subcontainer_r h4').css({'transform': 'translateX(-50% -20px) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
-            
-        });
-    });
 
     function reset(){
         $("#range_left").remove();
         $("#h4-container").remove();
-        $("#range_right").remove();
-        $("#h4-container").remove();
-        $("#left_page").append("<input id='range_left' type='range' min='0' max='100' value='0' step='20'>");
-        $("#left_page").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>0<span></span></h4></div></div>');
-        $("#right_page").append("<input id='range_right' type='range' min='0' max='100' value='0' step='20'>");
-        $("#right_page").append('<div id="h4-container"><div id="h4-subcontainer_r"><h4>0<span></span></h4></div></div>');
+        
+        $(".select").append("<input id='range_left' type='range' min='0' max='100' value='50' step='10'>");
+        $(".select").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>50<span></span></h4></div></div>');
     }
     
 
@@ -256,6 +245,15 @@ $(document).ready(function(){
 
             $("#container").css("background-color","white");
             $(".box").prepend("<div class='roding_page'><img id='roding_img' src='../images/loading.gif' alt='roading'><h3>이상형을 생성중입니다.</h3><div>");
+            $.ajax({
+                url:'/start/create_py',
+                dataType:'json',
+                type:'POST',
+                data:{},
+                success:function(result){
+                    
+                }
+            })
             setTimeout(function(){
                 $(".select").fadeIn(0,'swing',function(){
                     $("#container").css("background-color","whitesmoke");

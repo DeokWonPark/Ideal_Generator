@@ -1,4 +1,5 @@
 var pool;
+var net = require('net');
 
 function init(pool_){
     pool=pool_;
@@ -71,6 +72,20 @@ function end(req,res){
         });
 }
 
+function create_py(req,res){
+    var client = new net.Socket();
+    client.connect(55555,'127.0.0.1',function(){
+        console.log("Connected");
+        client.write('Hello, server');
+    });
+
+    client.on('data',function(data){
+        console.log('Received: '+data);
+        client.destroy();
+    });
+}
+
+module.exports.create_py =create_py;
 module.exports.init=init;
 module.exports.start_first=start_first;
 module.exports.end=end;

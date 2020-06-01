@@ -121,8 +121,12 @@ header .head-line h5{margin-left: 200px;}
     background-color: darkgrey;
     margin: 20px 3% 3px 3%;
 }
+#menu1 .select {padding-bottom: 20px;}
 #menu1 .select img{width: 300px; height: 400px;}
 #menu1 .select h4{margin: 12px; font-size: 18px;}
+#range_left {display: block; margin: 0 auto; margin-top: 20px;}
+#h4-container {display: block; margin: 0 auto;}
+#h4-container h4{left: 50%;}
 #menu1 .select_head{padding: 10px 0px 0px 0px;}
 #menu1 .select_head h1{margin: 10px 0px 0px 0px;}
 #menu1 .select_page #ideal_name{margin-top: 5px; text-align: center;}
