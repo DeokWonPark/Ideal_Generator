@@ -71,19 +71,38 @@ function end(req,res){
             }
         });
 }
-
+var output = "";
 function create_py(req,res){
+    var index="";
+    for (i of req.body.select_index){
+        index+=" "+i;
+    }
     var client = new net.Socket();
     client.connect(55555,'127.0.0.1',function(){
         console.log("Connected");
-        client.write('Hello, server');
+        client.write(index);
     });
 
     client.on('data',function(data){
         console.log('Received: '+data);
         client.destroy();
     });
-}
+
+    // var spawn = require('child_process').spawn,
+    // py    = spawn('python', ['test1.py']),
+    // data = [1,2,3,4,5,6,7,8],
+    // dataString = 'iii';
+
+    // py.stdout.on('data', function(data){
+    // dataString += data.toString();
+    // });
+
+    // py.stdout.on('end', function(){
+    // console.log('Sum of numbers=',dataString);
+    // });
+
+    // py.stdin.write(JSON.stringify(data));
+    }
 
 module.exports.create_py =create_py;
 module.exports.init=init;

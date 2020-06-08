@@ -2,6 +2,7 @@
 $(document).ready(function(){
     var count=8;
     var count_v=count;
+    var select=[];
     
     //////////////////////////////////////////////////////////
     // 이상형 월드컵 로직
@@ -33,9 +34,11 @@ $(document).ready(function(){
     function start_first(pos){
         if(pos==='left'){
             remain_img.push(prams[0]);
+            select.push(prams[0]);
         }
         else if(pos==='right'){
             remain_img.push(prams[1]);
+            select.push(prams[1]);
         }
         prams=[];
         if(all_img.length===0 && remain_img.length===1){
@@ -249,9 +252,10 @@ $(document).ready(function(){
                 url:'/start/create_py',
                 dataType:'json',
                 type:'POST',
-                data:{},
+                traditional : true,
+                data:{select_index:select},
                 success:function(result){
-                    
+                    console.log("dsdsd");
                 }
             })
             setTimeout(function(){
