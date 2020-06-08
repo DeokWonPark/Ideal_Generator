@@ -8,7 +8,7 @@ module.exports={
         {file:'./user',path:'/process/logout',method:'logout',type:'get'},
         {file:'./worldcup',path:'/start/first',method:'start_first',type:'post'},
         {file:'./worldcup',path:'/start/end',method:'end',type:'post'},
-        {file:'./worldcup',path:'/start/create_py',method:'end',type:'post'},
+        {file:'./worldcup',path:'/start/create_py',method:'create_py',type:'post'},
         {file:'./ranking',path:'/process/ranking',method:'ranking',type:'post'},
         {file:'./mypage',path:'/myideal',method:'mypage_load',type:'post'},
     ],
