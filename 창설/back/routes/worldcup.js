@@ -1,11 +1,12 @@
 var pool;
+var net = require('net');
 
 function init(pool_){
     pool=pool_;
 }
 
-var sqlgirlimg = 'SELECT name, img_path FROM girl WHERE id=? OR id=?';
-var sqlmanimg = 'SELECT name, img_path FROM man WHERE id=? OR id=?';
+var sqlgirlimg = 'SELECT name, img_path FROM girl_gif WHERE id=? OR id=?';
+var sqlmanimg = 'SELECT name, img_path FROM man_gif WHERE id=? OR id=?';
 var sqlidealimg= 'SELECT name, img_path FROM ideal WHERE id=?';
 
 var sqlquery;
@@ -71,6 +72,20 @@ function end(req,res){
         });
 }
 
+function create_py(req,res){
+    var client = new net.Socket();
+    client.connect(55555,'127.0.0.1',function(){
+        console.log("Connected");
+        client.write('Hello, server');
+    });
+
+    client.on('data',function(data){
+        console.log('Received: '+data);
+        client.destroy();
+    });
+}
+
+module.exports.create_py =create_py;
 module.exports.init=init;
 module.exports.start_first=start_first;
 module.exports.end=end;

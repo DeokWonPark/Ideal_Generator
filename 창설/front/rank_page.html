@@ -6,41 +6,63 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Appdo</title>
 
+
+    
     <link rel="stylesheet" type="text/css" href="css/rank_page.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="shortcut icon" href="images/favicon-16x16.png">
+    <link rel="icon" href="images/favicon-16x16.png">
+    <link rel="stylesheet" href="css/navigation_response.css">
+    <script src=".\lib\kakao.js"></script>
 </head>
-<header>
-    <nav>
-        <strong class="logo_box"><a href="Worldcup.html"><img src="images/logo_.PNG" alt="Appdo"></a></strong>
-        <div class = "nav_top_link_nav-center">
-            <div class="container">
-                <div class="row">
-                <span class="col">메뉴1</span>
-                <span class="col">남자 순위</span>
-                <span class="col"><a href="rank_page.html" style="color:white">여자 순위</a></span>
-                <span class="col">메뉴4</span>
-                </div>
-            </div>
-        </div>
-        <ul class="nav_top-link_nav-right">
-            <li>
-                <strong class="profile"><img src="images/Login.PNG" alt="profile"></strong>
-                <a href="login.html">
-                    Login
+<section id="wrap">
+    <nav id="navigation_web" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid bg-danger">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/Worldcup.html">
+                    <img src="images/logo_.PNG" alt="Appdo">
                 </a>
-            </li>
-        </ul>
+            </div>
+            <div class="navbar-nav-scroll">
+                <ul class="nav navbar-nav bd-navbar-nav flex-row">
+                    <li><a href="#">메뉴 1</a></li>
+                    <li><a href="#">남자 순위</a></li>
+                    <li><a href="./rank_page.html">여자 순위</a></li>
+                    <li><a href="#">메뉴 4</a></li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><input type="text" placeholder="Search..."></li>
+                <li><a href="./adduser.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
     </nav>
-</header>
-
+    <nav id="navigation_app">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">메뉴 1</a>
+            <a href="#">남자 순위</a>
+            <a href="./rank_page.html">여자 순위</a>
+            <a href="#">메뉴 4</a>
+        </div>
+        <span onclick="openNav()">
+            <div class="container">
+                <div id="ybar1" class="bar1"></div>
+                <div id="ybar2" class="bar2"></div>
+                <div id="ybar3" class="bar3"></div>
+            </div>
+        </span>    
+    </nav>
+</section>
 
 <body>
-    <div class="container">
+    <div id="container_rank" class="container">
         <div class="row justify-content-md-center">
           <div class="col col-lg-2"></div>
           <div class="col-md-auto">
-            <table class="table" id = "NUMBER 1">
+            <table class="table" id = "NUMBER_1">
                 <thead class="table_header">
                     <tr>
                     <th scope="col">#NUMBER 1</th>
@@ -50,7 +72,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                    <td scope="row" rowspan="3" class = "character_img"><img src = "./images/girl.PNG" height = "150px" ></td>
+                    <td scope="row" rowspan="3" class = "character_img"><img src = "./images/girl/girl.PNG" height = "150px" ></td>
                     <td class = "character_info" rowspan="3">
                         *생성자<br>
                         *특징<br>
@@ -63,18 +85,18 @@
                         <span class = "character_like_num">0</span></td>
                     </tr>
                     <tr>
-                    <td class = "character_like_btn"><img src = "./images/like.PNG" height = "30px" ></td>
+                    <td class = "character_like_btn" id="ss"><img src = "./images/like.PNG" height = "30px" ></td>
                     </tr>
                 </tbody>
             </table>          </div>
           <div class="col col-lg-2"></div>
         </div>
     </div>
-    <div class="container">
+    <div id="container_rank" class="container">
         <div class="row justify-content-md-center">
           <div class="col col-lg-2"></div>
           <div class="col-md-auto">
-            <table class="table" id = "NUMBER 2">
+            <table class="table" id = "NUMBER_2">
                 <thead class="table_header">
                     <tr>
                     <th scope="col">#NUMBER 2</th>
@@ -84,7 +106,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                    <td scope="row" rowspan="3" class = "character_img"><img src = "./images/girl.PNG" height = "150px" ></td>
+                    <td scope="row" rowspan="3" class = "character_img"><img src = "./images/girl/girl1.PNG" height = "150px" ></td>
                     <td class = "character_info" rowspan="3">
                         *생성자<br>
                         *특징<br>
@@ -105,11 +127,11 @@
         </div>
     </div>
 
-    <div class="container">
+    <div id="container_rank" class="container">
         <div class="row justify-content-md-center">
           <div class="col col-lg-2"></div>
           <div class="col-md-auto">
-            <table class="table" id = "NUMBER 3">
+            <table class="table" id = "NUMBER_3">
                 <thead class="table_header">
                     <tr>
                     <th scope="col">#NUMBER 3</th>
@@ -119,7 +141,42 @@
                 </thead>
                 <tbody>
                     <tr>
-                    <td scope="row" rowspan="3" class = "character_img"><img src = "./images/girl.PNG" height = "150px" ></td>
+                    <td scope="row" rowspan="3" class = "character_img"><img src = "./images/girl/girl2.PNG" height = "150px" ></td>
+                    <td class = "character_info" rowspan="3">
+                        *생성자<br>
+                        *특징<br>
+                        *유사연예인
+                    </td>
+                    <td>BLANK</td>
+                    </tr>
+                    <tr>
+                    <td class = "character_like">좋아요
+                        <span class = "character_like_num">0</span></td>
+                    </tr>
+                    <tr>
+                    <td class = "character_like_btn"><img src = "./images/like.PNG" height = "30px" ></td>
+                    </tr>
+                </tbody>
+            </table>          </div>
+          <div class="col col-lg-2"></div>
+        </div>
+    </div>
+
+    <div id="container_rank" class="container">
+        <div class="row justify-content-md-center">
+          <div class="col col-lg-2"></div>
+          <div class="col-md-auto">
+            <table class="table" id = "NUMBER_4">
+                <thead class="table_header">
+                    <tr>
+                    <th scope="col">#NUMBER 4</th>
+                    <th scope="col">정보</th>
+                    <th scope="col">좋아요</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td scope="row" rowspan="3" class = "character_img"><img src = "./images/girl/girl3.PNG" height = "150px" ></td>
                     <td class = "character_info" rowspan="3">
                         *생성자<br>
                         *특징<br>
@@ -155,7 +212,11 @@
     </section>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="./lib/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="./lib/carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
     <script type="text/javascript" src="./js/ui.js"></script>
     <script type="text/javascript" src="./js/Like.js"></script>
+    <script type="text/javascript" src="./js/login.js"></script>
+    <script src="./js/nav.js"></script>
+
 </body>
 </html>

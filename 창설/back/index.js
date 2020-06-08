@@ -31,6 +31,14 @@ app.get('/adduser',(req,res) => {
     res.sendFile((path.join(__dirname,"../front"))+"/adduser.html");
 });
 
+app.get('/rank',(req,res) => {
+    res.sendFile((path.join(__dirname,"../front"))+"/rank_page.html");
+});
+
+app.get('/mypage',(req,res) => {
+    res.sendFile((path.join(__dirname,"../front"))+"/mypage.html");
+});
+
 app.set('views',__dirname+'/views');
 app.set('view engine', 'ejs');
 
@@ -47,7 +55,7 @@ app.use(session({
 
 var mysql=require('mysql');
 var pool=mysql.createPool({
-    connectionLimit:10,
+    connectionLimit:20,
     host:'localhost',
     user:'root',
     password:'111111',
@@ -57,8 +65,20 @@ var pool=mysql.createPool({
 
 var worldcup=require('./routes/worldcup');
 var user=require('./routes/user');
+var rank=require('./routes/ranking');
+var mypage=require('./routes/mypage');
 worldcup.init(pool);
 user.init(pool);
+rank.init(pool);
+mypage.init(pool);
+/////////////////////////////////////////////////////////////
+// var {PythonShell}  = require('python-shell');
+// console.dir(PythonShell);
+
+// PythonShell.run('test1.py', null, (err, results) => {
+//   if (err) throw err;
+//   console.log('results: ${results}');
+// });
 
 ////////////////////////////////////////////////////////////////
 

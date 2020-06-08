@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     var count=8;
     var count_v=count;
@@ -86,7 +87,33 @@ $(document).ready(function(){
                 $(".select_page #right_text").text(result[1].name);
             }
         });
+        // $("#left_page").append("<input id='range_left' type='range' min='0' max='100' value='0' step='20'>");
+        // $("#left_page").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>0<span></span></h4></div></div>');
+        // $("#right_page").append("<input id='range_right' type='range' min='0' max='100' value='0' step='20'>");
+        // $("#right_page").append('<div id="h4-container"><div id="h4-subcontainer_r"><h4>0<span></span></h4></div></div>');
+        $(".select").append("<input id='range_left' type='range' min='0' max='100' value='50' step='10'>");
+        $(".select").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>50<span></span></h4></div></div>');
     }
+    $(document).on("change input","#range_left",function(){
+        $(function() {
+            var rangePercent = $('[id="range_left"]').val();
+            $('#h4-subcontainer_l h4').html(rangePercent+'<span></span>');
+            $('[id="range_left"], h4>span').css('filter', 'hue-rotate(-' + rangePercent + 'deg)');
+            // $('h4').css({'transform': 'translateX(calc(-50% - 20px)) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
+            $('#h4-subcontainer_l h4').css({'transform': 'translateX(-50% -20px) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
+        
+        });
+    });
+    
+
+    function reset(){
+        $("#range_left").remove();
+        $("#h4-container").remove();
+        
+        $(".select").append("<input id='range_left' type='range' min='0' max='100' value='50' step='10'>");
+        $(".select").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>50<span></span></h4></div></div>');
+    }
+    
 
     function worldcup(url,gender,pos){
         var wid="#"+pos+"_"+gender;
@@ -122,6 +149,10 @@ $(document).ready(function(){
                 data:{pos:gender,pram1:prams[0],pram2:prams[1]},
                 success:function(result){
                     if(final==true){
+                        $("#range_left").remove();
+                        $("#h4-container").remove();
+                        $("#range_right").remove();
+                        $("#h4-container").remove();
                         $(".select_head h1").text("우승");
                         $("#"+pos_rev+"_page").fadeOut(1500,'swing',function(){
                             $(this).remove();
@@ -135,6 +166,7 @@ $(document).ready(function(){
                         $(lid).attr("id","Lose");
                     }
                     else{
+                        reset();
                         $("#left_"+gender).attr("src",result[0].img_path);
                         $(".select_page #left_text").text(result[0].name);
                         
@@ -160,6 +192,10 @@ $(document).ready(function(){
 
     // 첫 Start버튼 클릭 시
     $("#start").on("click",function(){
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+        history.go(1);
+};
         $("#menu1 .box").empty();
         $("#menu1 .box").append("<div class='select'></div>");
         $("#menu1 .select").prepend("<div class='select_head'><h1>장르</h1></div>");
@@ -209,6 +245,15 @@ $(document).ready(function(){
 
             $("#container").css("background-color","white");
             $(".box").prepend("<div class='roding_page'><img id='roding_img' src='../images/loading.gif' alt='roading'><h3>이상형을 생성중입니다.</h3><div>");
+            $.ajax({
+                url:'/start/create_py',
+                dataType:'json',
+                type:'POST',
+                data:{},
+                success:function(result){
+                    
+                }
+            })
             setTimeout(function(){
                 $(".select").fadeIn(0,'swing',function(){
                     $("#container").css("background-color","whitesmoke");
@@ -216,7 +261,7 @@ $(document).ready(function(){
                     $(".select_head h1").text("나의 이상형");
                     $(".select_page h4").remove();
                     $(".final_btn").before(
-                    '<form id="rank_form" method="post" action="/process/ranking"><input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input><button id="Ranking registration" type="submit" class="btn btn-default">랭킹 등록</button></form>');
+                    '<form id="rank_form" method="post" action="/process/ranking"><input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input><button id="Ranking registration" type="submit" class="btn btn-default">이상형 등록</button></form>');
                     $.ajax({
                         url:'/start/end',
                         dataType:'json',
@@ -240,5 +285,6 @@ $(document).ready(function(){
     $(document).on("click","#create_retry",function(){
        location.reload();
     });
+ 
 
 });

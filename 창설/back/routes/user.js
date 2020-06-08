@@ -91,26 +91,21 @@ function login(req,res){
                     console.dir(rows);
                     req.session.user={
                         id:pid,
+                        name:rows[0].name,
+                        nickname:rows[0].nickname,
                         authorized:true,
                     }
+                    res.cookie('user',{
+                        id:pid,
+                        name:rows[0].name,
+                        nickname:rows[0].nickname,
+                        authorized:true,
+                    })
     
                     var name=rows[0].nickname;
                     var context={userid:pid,username:name};
 
-                    req.app.render('Worldcup',context,function(err,html){
-                        if(err){
-                            console.error('뷰 렌더링 중 에러발생: '+err.stack);
-                            res.writeHead(200,{'Content-Type':'text/html ; charset=utf-8'});
-                            res.write('<h2>뷰 렌더링 중 에러발생</h2>');
-                            res.write("<p>"+err.stack+"</p>");
-                            res.end();
-
-                            return;
-                        }
-
-                        console.log('rendered: '+html);
-                        res.end(html);
-                    });
+                    res.redirect("/");
                     
                 }
             })
@@ -156,9 +151,7 @@ function signup(req,res){
 
                 var insertid=result.insertId;
                 console.log("추가한 레코드의 아이디 :"+insertid);
-                res.writeHead(200,{'Content-Type':'text/html ; charset=utf-8'});
-                res.write('<h2>사용자 추가성공</h2>');
-                res.end();
+                res.redirect("/");
             }
             else{
                 res.writeHead(200,{'Content-Type':'text/html ; charset=utf-8'});
@@ -178,14 +171,16 @@ function signup(req,res){
 function logout(req,res){
     if(req.session.user){
         console.log("로그아웃 합니다");
+        res.clearCookie('user');
         req.session.destroy(function(err){
             if(err) throw err;
-            res.redirect('/login.html');
+            res.redirect('/');
         });
     }
     else{
         console.log("로그인 되어있지 않습니다.");
-        res.redirect('/login.html');
+        res.clearCookie('user');
+        res.redirect('/');
     }
 }
 
