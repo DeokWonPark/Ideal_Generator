@@ -12,7 +12,13 @@ $(document).ready(function(){
     if(user_cookie){
         $("#auth").text("Logout");
         $("#auth").attr("href","/process/logout");
-        $("#nickname").text(user_nickname+" 님");
+        $("#sign_nickname").text(user_nickname+" 님");
+        $("#sign_nickname").attr("href","/mypage");
+
+        $("#nav_auth").attr("href","/mypage");
+        $("#nav_auth").text("마이페이지");
+        $("#nav_sign").attr("href","/process/logout");
+        $("#nav_sign").text("로그아웃");
     }
     
 });

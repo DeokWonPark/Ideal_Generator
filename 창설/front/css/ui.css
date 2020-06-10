@@ -25,6 +25,11 @@ a:hover {text-decoration:none}
 .blind{display: none;overflow: hidden;position: absolute;width: 0;height: 0;padding: 0;margin: 0; font-size: 0;line-height: 0; text-indent: -9999em;visibility: hidden;outline: none;z-index: -1;}
 /* html,body{overflow:hidden;height:100%;} */
  /*     header     */
+
+body
+{
+  padding-top: 0px !important;
+}
 #wrap
 {
     width: 100%;
@@ -128,7 +133,7 @@ header .head-line h5{margin-left: 200px;}
 #h4-container {display: block; margin: 0 auto;}
 #h4-container h4{left: 50%;}
 #menu1 .select_head{padding: 10px 0px 0px 0px;}
-#menu1 .select_head h1{margin: 10px 0px 0px 0px;}
+#menu1 .select_head h1{margin: 10px 0px 0px 0px; font-size: 35px;}
 #menu1 .select_page #ideal_name{margin-top: 5px; text-align: center;}
 #menu1 .select_page #rank_form{display: inline;}
 #menu1 .select_page #rank_form button{margin-top: 8px; margin-right: 15px;}
@@ -139,7 +144,7 @@ header .head-line h5{margin-left: 200px;}
 .final_btn button{margin-top: 8px;}
 
 /*  footer  */
-footer{ background-color: grey; padding-bottom: 5px; display: inline-block;}
+footer{ background-color: grey; padding-bottom: 5px;}
 footer p{color: white;}
 
 

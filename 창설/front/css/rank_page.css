@@ -1,53 +1,34 @@
-/*header*/
+@charset "utf-8";
+@import url(https://cdn.rawgit.com/theeluwin/NotoSansKR-Hestia/master/stylesheets/NotoSansKR-Hestia.css);
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, button, abbr, acronym, address, code, del, 
+dfn, em, img, strong, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, 
+td, hr{margin:0;padding:0;font-size:100%;box-sizing: border-box;}
+body{height:100%;min-height:100%;font-family:'Noto Sans Korean','Malgun Gothic','맑은고딕','돋움',dotum, sans-serif;font-size:16px;color:#737373;line-height:1.5;background:url(../images/content_bg4.png) repeat;}
+h1, h2, h3, h5, h6 {font-weight:normal}
 ol, ul, li {list-style:none}
-header
-{
-    background-color:white;
-    padding-top: 1px;
-    height: 100px;
-    display: block;
-}
-header nav
-{   
-    position:fixed;
-    background-color: #737;
-    border:1px solid #737;
-    width: 100%;
-    margin-bottom: 0px;
-    display: block;
-    height: auto;
-    padding-bottom: 2;
-    overflow: visible;
-    float: right;
-}
-header nav .nav_top_link_nav-center{
-    position: absolute;
-    left : 400px;
-    top : 15px;
-}
-
-header nav .nav_top_link_nav-center span{
-    padding: 10px;
-    font-size : 19px;
-    color: whitesmoke;
-}
-header .logo_box  img
-{
-    width: 130px;
-    float: left;
-    height: 60px;
-}
-header nav .nav_top-link_nav-right{ position : relative; float: right; text-align: right; height: 100%;top: 4px;margin-top: 10px;}
-header nav ul li{height: 100%;margin:10px 7px 10px 0px; display: inline;}
-header nav ul li #nickname{padding-top: 10px;}
-header nav ul li .profile img{width: 30px; height: 30px; margin: 0px 10px 0px 0px ;}
-header nav ul li a{color: black; height: 100%; font-size: 16px;font-weight:600; line-height:30px;}
-header nav ul li:hover a{color: skyblue;}
-
+table {width:100%; border-collapse:collapse;border-spacing:0}
+form, fieldset, iframe {display:block;border:0}
+img, button {border:0 none;vertical-align:top;}
+hr {height:0; display:none}
+i, em, address{font-style:normal}
+label, button{cursor:pointer}
+blockquote, q {quotes:none}
+caption, legend {overflow:hidden;visibility:hidden;position:absolute;width:0;height:0;padding:0;margin:0;font-size:0;text-indent:-100%;white-space:nowrap;z-index:-1}
+header, footer, section, article, aside, nav, hgroup, details, menu, figure, figcaption {display:block;box-sizing: border-box;}
+input, textarea, select, button {font-family:'Noto Sans Korean','Malgun Gothic','맑은고딕','돋움',dotum, sans-serif;font-size:16px;color:#919090;line-height:1.5;letter-spacing:0;vertical-align:middle; border:none;}
+input, textarea {margin:0;padding:0;  background:none; box-sizing:border-box;}
+textarea {resize:none}
+a {color:#919090;text-decoration:none}
+a:link, a:visited {text-decoration:none}
+a:hover {text-decoration:none}
+.blind{display: none;overflow: hidden;position: absolute;width: 0;height: 0;padding: 0;margin: 0; font-size: 0;line-height: 0; text-indent: -9999em;visibility: hidden;outline: none;z-index: -1;}
 
 
 /*body*/
-
+#container_rank{
+    display:block;
+}
 .table{
     border : 1px solid #444444;
     background-color: #EBEEF5;

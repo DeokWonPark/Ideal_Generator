@@ -6,46 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Appdo</title>
 
+
+    
     <link rel="stylesheet" type="text/css" href="css/rank_page.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="shortcut icon" href="images/favicon-16x16.png">
     <link rel="icon" href="images/favicon-16x16.png">
+    <link rel="stylesheet" href="css/navigation_response.css">
     <script src=".\lib\kakao.js"></script>
 </head>
-<header>
-    <nav>
-        <strong class="logo_box"><a href="/"><img src="images/logo_.PNG" alt="Appdo"></a></strong>
-        <div class = "nav_top_link_nav-center">
-            <div class="container">
-                <div class="row">
-                <span class="col">메뉴1</span>
-                <span class="col">남자 순위</span>
-                <span class="col"><a href="rank_page.html" style="color:white">여자 순위</a></span>
-                <span class="col">메뉴4</span>
-                </div>
-            </div>
-        </div>
-        <ul class="nav_top-link_nav-right">
-            <li>
-                <strong class="profile"><img id="profile" src="images/Login.PNG" alt="profile"></strong>
-            </li>
-            <li>
-                <a href="/mypage" id="nickname"></a>
-                
-            </li>
-            <li>
-                <a href="/login" id="auth">
-                    Login
+<section id="wrap">
+    <nav id="navigation_web" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid bg-danger">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/Worldcup.html">
+                    <img src="images/logo_.PNG" alt="Appdo">
                 </a>
-            </li>
-        </ul>
+            </div>
+            <div class="navbar-nav-scroll">
+                <ul class="nav navbar-nav bd-navbar-nav flex-row">
+                    <li><a href="#">메뉴 1</a></li>
+                    <li><a href="#">남자 순위</a></li>
+                    <li><a href="./rank_page.html">여자 순위</a></li>
+                    <li><a href="#">메뉴 4</a></li>
+                </ul>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><input type="text" placeholder="Search..."></li>
+                <li><a href="adduser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
     </nav>
-</header>
-
+    <nav id="navigation_app">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="/">홈</a>
+            <a href="#">남자 순위</a>
+            <a href="/rank">여자 순위</a>
+            <a href="#">메뉴 4</a>
+        </div>
+        <span onclick="openNav()">
+            <div class="container">
+                <div id="ybar1" class="bar1"></div>
+                <div id="ybar2" class="bar2"></div>
+                <div id="ybar3" class="bar3"></div>
+            </div>
+        </span>    
+    </nav>
+</section>
 
 <body>
-    <div class="container">
+    <div id="container_rank" class="container">
         <div class="row justify-content-md-center">
           <div class="col col-lg-2"></div>
           <div class="col-md-auto">
@@ -79,7 +92,7 @@
           <div class="col col-lg-2"></div>
         </div>
     </div>
-    <div class="container">
+    <div id="container_rank" class="container">
         <div class="row justify-content-md-center">
           <div class="col col-lg-2"></div>
           <div class="col-md-auto">
@@ -114,7 +127,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div id="container_rank" class="container">
         <div class="row justify-content-md-center">
           <div class="col col-lg-2"></div>
           <div class="col-md-auto">
@@ -149,7 +162,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div id="container_rank" class="container">
         <div class="row justify-content-md-center">
           <div class="col col-lg-2"></div>
           <div class="col-md-auto">
@@ -203,5 +216,7 @@
     <script type="text/javascript" src="./js/ui.js"></script>
     <script type="text/javascript" src="./js/Like.js"></script>
     <script type="text/javascript" src="./js/login.js"></script>
+    <script src="./js/nav.js"></script>
+
 </body>
 </html>
