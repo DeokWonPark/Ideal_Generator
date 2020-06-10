@@ -82,10 +82,12 @@ $(document).ready(function(){
             data:{pos:gender,pram1:prams[0],pram2:prams[1]},
             success:function(result){
                 $("#girl").attr("src",result[0].img_path);
+                $("#girl").attr("alt",gender);
                 $("#girl").attr("id","left_"+gender);
                 $(".select_page #left_text").text(result[0].name);
 
                 $("#man").attr("src",result[1].img_path);
+                $("#man").attr("alt",gender);
                 $("#man").attr("id","right_"+gender);
                 $(".select_page #right_text").text(result[1].name);
             }
@@ -251,45 +253,61 @@ $(document).ready(function(){
 
     // 마지막 이상형 생성 부분
     $(document).on("click",".final_btn #final_btn",function(){
-        $(".select").fadeOut(500,'swing',function(){
+        
+            var gender=$('#Win').attr('alt');
+        
+            $(".select").fadeOut(500,'swing',function(){
 
-            $("#container").css("background-color","white");
-            $(".box").prepend("<div class='roding_page'><img id='roding_img' src='../images/loading.gif' alt='roading'><h3>이상형을 생성중입니다.</h3><div>");
-            $.ajax({
-                url:'/start/create_py',
-                dataType:'json',
-                type:'POST',
-                traditional : true,
-                data:{select_index:select},
-                success:function(result){
-                    
+                $("#container").css("background-color","white");
+                $(".box").prepend("<div class='roding_page'><img id='roding_img' src='../images/loading.gif' alt='roading'><h3>이상형을 생성중입니다.</h3><div>");
+
+                $(".box").prepend("<div id='select_div'></div>")
+                for(var i=0;i<4;i++){
+                    $("#select_div").prepend("<img src='' id='select_pkg'>");
+                    var path="../images/"+gender+"/"+gender+select[i]+".PNG";
+                    $('#select_pkg').attr('src',path);
+            
                 }
-            })
-            setTimeout(function(){
-                $(".select").fadeIn(0,'swing',function(){
-                    $("#container").css("background-color","whitesmoke");
-                    $(".roding_page").remove();
-                    $(".select_head h1").text("나의 이상형");
-                    $(".select_page h4").remove();
-                    $(".final_btn").before(
-                    '<form id="rank_form" method="post" action="/process/ranking"><input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input><button id="Ranking registration" type="submit" class="btn btn-default">이상형 등록</button></form>');
-                    $.ajax({
-                        url:'/start/end',
-                        dataType:'json',
-                        type:'POST',
-                        data:{},
-                        success:function(result){
-                            final_path=result[0].img_path;
-                            $(".select_page #Win").attr("src",result[0].img_path);
-                            $(".select_page #Win").attr("id","ideal");
-                            $("#ideal").attr('src',result[0].img_path);
-                        }
-                    })
-                    $(".final_btn #final_btn").text("이상형 재생성");
-                    $(".final_btn #final_btn").attr("id","create_retry");
-                });
-            },2000);
-        });
+                
+                $.ajax({
+                    url:'/start/create_py',
+                    dataType:'json',
+                    type:'POST',
+                    traditional : true,
+                    data:{select_index:select},
+                    success:function(result){
+                        
+                    }
+                })
+    
+                setTimeout(function(){
+                    $(".select").fadeIn(0,'swing',function(){
+                        $("#container").css("background-color","whitesmoke");
+                        $("#select_div").remove();
+                        $(".roding_page").remove();
+                        $(".select_head h1").text("나의 이상형");
+                        $(".select_page h4").remove();
+                        $(".final_btn").before(
+                        '<form id="rank_form" method="post" action="/process/ranking"><input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input><button id="Ranking registration" type="submit" class="btn btn-default">이상형 등록</button></form>');
+                        $.ajax({
+                            url:'/start/end',
+                            dataType:'json',
+                            type:'POST',
+                            data:{},
+                            success:function(result){
+                                final_path=result[0].img_path;
+                                $(".select_page #Win").attr("src",result[0].img_path);
+                                $(".select_page #Win").attr("id","ideal");
+                                $("#ideal").attr('src',result[0].img_path);
+                            }
+                        })
+                        $(".final_btn #final_btn").text("이상형 재생성");
+                        $(".final_btn #final_btn").attr("id","create_retry");
+                    });
+                },140000);
+            });
+        
+        
     });
 
     //이상형 재 생성
