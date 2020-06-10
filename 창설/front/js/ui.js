@@ -90,32 +90,28 @@ $(document).ready(function(){
                 $(".select_page #right_text").text(result[1].name);
             }
         });
-        // $("#left_page").append("<input id='range_left' type='range' min='0' max='100' value='0' step='20'>");
-        // $("#left_page").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>0<span></span></h4></div></div>');
-        // $("#right_page").append("<input id='range_right' type='range' min='0' max='100' value='0' step='20'>");
-        // $("#right_page").append('<div id="h4-container"><div id="h4-subcontainer_r"><h4>0<span></span></h4></div></div>');
-        $(".select").append("<input id='range_left' type='range' min='0' max='100' value='50' step='10'>");
-        $(".select").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>50<span></span></h4></div></div>');
-    }
-    $(document).on("change input","#range_left",function(){
-        $(function() {
-            var rangePercent = $('[id="range_left"]').val();
-            $('#h4-subcontainer_l h4').html(rangePercent+'<span></span>');
-            $('[id="range_left"], h4>span').css('filter', 'hue-rotate(-' + rangePercent + 'deg)');
-            // $('h4').css({'transform': 'translateX(calc(-50% - 20px)) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
-            $('#h4-subcontainer_l h4').css({'transform': 'translateX(-50% -20px) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
         
-        });
-    });
+        // $(".select").append("<input id='range_left' type='range' min='0' max='100' value='50' step='10'>");
+        // $(".select").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>50<span></span></h4></div></div>');
+    }
+    // $(document).on("change input","#range_left",function(){
+    //     $(function() {
+    //         var rangePercent = $('[id="range_left"]').val();
+    //         $('#h4-subcontainer_l h4').html(rangePercent+'<span></span>');
+    //         $('[id="range_left"], h4>span').css('filter', 'hue-rotate(-' + rangePercent + 'deg)');
+    //         $('#h4-subcontainer_l h4').css({'transform': 'translateX(-50% -20px) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
+        
+    //     });
+    // });
     
 
-    function reset(){
-        $("#range_left").remove();
-        $("#h4-container").remove();
+    // function reset(){
+    //     $("#range_left").remove();
+    //     $("#h4-container").remove();
         
-        $(".select").append("<input id='range_left' type='range' min='0' max='100' value='50' step='10'>");
-        $(".select").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>50<span></span></h4></div></div>');
-    }
+    //     $(".select").append("<input id='range_left' type='range' min='0' max='100' value='50' step='10'>");
+    //     $(".select").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>50<span></span></h4></div></div>');
+    // }
     
 
     function worldcup(url,gender,pos){
@@ -139,8 +135,8 @@ $(document).ready(function(){
           },
           1000,function() {
             $(wid).animate({
-                width: "300px",
-                height: "400px",
+                width: $('#'+pos_rev+'_page img').width(),
+                height: $('#'+pos_rev+'_page img').height(),
                 opacity: 1.0
               },
               0);
@@ -169,7 +165,7 @@ $(document).ready(function(){
                         $(lid).attr("id","Lose");
                     }
                     else{
-                        reset();
+                        // reset();
                         $("#left_"+gender).attr("src",result[0].img_path);
                         $(".select_page #left_text").text(result[0].name);
                         
@@ -204,6 +200,17 @@ $(document).ready(function(){
         $("#menu1 .select").prepend("<div class='select_head'><h1>장르</h1></div>");
         $("#menu1 .select").append("<div class='select_page' id='left_page'><img id='girl' src='../images/girl/girl.PNG' alt='girl'><h4 id='left_text'>여자 편</h4><div>");
         $("#menu1 .select").append("<div class='select_page' id='right_page'><img id='man' src='../images/man/man.PNG' alt='man'><h4 id='right_text'>남자 편</h4><div>");
+
+        var curWidth = $(window).width();
+        if(curWidth < 768){
+            document.getElementById('navigation_web').style.display = "none";
+            $('body').css('padding-top','0px');
+    
+            $('.select_page').css('width','200px');
+            $('.select_page').css('height','235px');
+            $('.select_page img').css('width','150px');
+            $('.select_page img').css('height','200px');
+        }
         start();
     });
 //////////////////////////////
@@ -255,7 +262,7 @@ $(document).ready(function(){
                 traditional : true,
                 data:{select_index:select},
                 success:function(result){
-                    console.log("dsdsd");
+                    
                 }
             })
             setTimeout(function(){
