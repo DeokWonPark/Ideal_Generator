@@ -1,8 +1,8 @@
 
 $(document).ready(function(){
+    var select=[];
     var count=8;
     var count_v=count;
-    var select=[];
     
     //////////////////////////////////////////////////////////
     // 이상형 월드컵 로직
@@ -32,14 +32,24 @@ $(document).ready(function(){
     }
 
     function start_first(pos){
+        if(all_img.length===0 && remain_img.length===0){
+            final=true;
+        }
         if(pos==='left'){
             remain_img.push(prams[0]);
-            select.push(prams[0]);
+            if(final==true)
+                select.push(prams[0]);
+            else
+                select.push(prams[1]);
         }
         else if(pos==='right'){
             remain_img.push(prams[1]);
-            select.push(prams[1]);
+            if(final==true)
+                select.push(prams[1]);
+            else
+                select.push(prams[0]);
         }
+        console.log("select_index"+select);
         prams=[];
         if(all_img.length===0 && remain_img.length===1){
             final=true;
@@ -90,7 +100,10 @@ $(document).ready(function(){
                 $(".select_page #right_text").text(result[1].name);
             }
         });
-        
+        // $("#left_page").append("<input id='range_left' type='range' min='0' max='100' value='0' step='20'>");
+        // $("#left_page").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>0<span></span></h4></div></div>');
+        // $("#right_page").append("<input id='range_right' type='range' min='0' max='100' value='0' step='20'>");
+        // $("#right_page").append('<div id="h4-container"><div id="h4-subcontainer_r"><h4>0<span></span></h4></div></div>');
         // $(".select").append("<input id='range_left' type='range' min='0' max='100' value='50' step='10'>");
         // $(".select").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>50<span></span></h4></div></div>');
     }
@@ -99,6 +112,7 @@ $(document).ready(function(){
     //         var rangePercent = $('[id="range_left"]').val();
     //         $('#h4-subcontainer_l h4').html(rangePercent+'<span></span>');
     //         $('[id="range_left"], h4>span').css('filter', 'hue-rotate(-' + rangePercent + 'deg)');
+    //         // $('h4').css({'transform': 'translateX(calc(-50% - 20px)) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
     //         $('#h4-subcontainer_l h4').css({'transform': 'translateX(-50% -20px) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
         
     //     });
@@ -135,8 +149,8 @@ $(document).ready(function(){
           },
           1000,function() {
             $(wid).animate({
-                width: $('#'+pos_rev+'_page img').width(),
-                height: $('#'+pos_rev+'_page img').height(),
+                width: "300px",
+                height: "400px",
                 opacity: 1.0
               },
               0);
@@ -200,17 +214,6 @@ $(document).ready(function(){
         $("#menu1 .select").prepend("<div class='select_head'><h1>장르</h1></div>");
         $("#menu1 .select").append("<div class='select_page' id='left_page'><img id='girl' src='../images/girl/girl.PNG' alt='girl'><h4 id='left_text'>여자 편</h4><div>");
         $("#menu1 .select").append("<div class='select_page' id='right_page'><img id='man' src='../images/man/man.PNG' alt='man'><h4 id='right_text'>남자 편</h4><div>");
-
-        var curWidth = $(window).width();
-        if(curWidth < 768){
-            document.getElementById('navigation_web').style.display = "none";
-            $('body').css('padding-top','0px');
-    
-            $('.select_page').css('width','200px');
-            $('.select_page').css('height','235px');
-            $('.select_page img').css('width','150px');
-            $('.select_page img').css('height','200px');
-        }
         start();
     });
 //////////////////////////////
@@ -264,7 +267,7 @@ $(document).ready(function(){
                 success:function(result){
                     
                 }
-            })
+            });
             setTimeout(function(){
                 $(".select").fadeIn(0,'swing',function(){
                     $("#container").css("background-color","whitesmoke");
@@ -279,12 +282,12 @@ $(document).ready(function(){
                         type:'POST',
                         data:{},
                         success:function(result){
-                            final_path=result[0].img_path;
-                            $(".select_page #Win").attr("src",result[0].img_path);
+                            final_path=result;
+                            $(".select_page #Win").attr("src",result.path);
                             $(".select_page #Win").attr("id","ideal");
-                            $("#ideal").attr('src',result[0].img_path);
+                            $("#ideal").attr('src',result.path);
                         }
-                    })
+                    });
                     $(".final_btn #final_btn").text("이상형 재생성");
                     $(".final_btn #final_btn").attr("id","create_retry");
                 });
