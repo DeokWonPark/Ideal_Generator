@@ -1,5 +1,6 @@
 var pool;
 var net = require('net');
+var img_path="../images/ideal/";
 
 function init(pool_){
     pool=pool_;
@@ -50,7 +51,7 @@ function start_first(req,res){
 }
 
 function end(req,res){
-    var param=1;
+    /*var param=1;
     pool.getConnection( function(err, connection) 
         {  
             if (err) 
@@ -69,9 +70,13 @@ function end(req,res){
                 // 커넥션 반환 
                 connection.release();
             }
-        });
+        });*/
+    console.log("end함수동작");
+    console.log(img_path);
+    res.send({path:img_path});
+    return;
 }
-var output = "";
+
 function create_py(req,res){
     var index="";
     for (i of req.body.select_index){
@@ -88,21 +93,7 @@ function create_py(req,res){
         client.destroy();
     });
 
-    // var spawn = require('child_process').spawn,
-    // py    = spawn('python', ['test1.py']),
-    // data = [1,2,3,4,5,6,7,8],
-    // dataString = 'iii';
-
-    // py.stdout.on('data', function(data){
-    // dataString += data.toString();
-    // });
-
-    // py.stdout.on('end', function(){
-    // console.log('Sum of numbers=',dataString);
-    // });
-
-    // py.stdin.write(JSON.stringify(data));
-    }
+}
 
 module.exports.create_py =create_py;
 module.exports.init=init;

@@ -3,8 +3,6 @@ var base64ToImage = require('base64-to-image');
 var sockets = [];
 var net = require('net');
 
-
-
 var server = net.createServer(function(client) {
     console.log('Client connection: ');
     console.log('local = %s:%s', client.localAddress, client.localPort);
@@ -22,7 +20,7 @@ var server = net.createServer(function(client) {
         console.log('end!')
         var decoded = Buffer.from(imageData, 'base64');
 
-        fs.writeFile("myfile.PNG", decoded, function (err) {
+        fs.writeFile("myfile.jpg", decoded, function (err) {
             if (err) throw err;
             else  console.log('Saved!');
         });
@@ -36,9 +34,6 @@ var server = net.createServer(function(client) {
         console.log('Socket Timed out');
     });
 });
-
-
-
 
 server.listen(3008, function() {
     console.log('Server listening: ' + JSON.stringify(server.address()));
