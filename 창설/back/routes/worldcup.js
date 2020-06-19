@@ -6,9 +6,9 @@ function init(pool_){
     pool=pool_;
 }
 
-var sqlgirlimg = 'SELECT name, img_path FROM girl_gif WHERE id=? OR id=?';
-var sqlmanimg = 'SELECT name, img_path FROM man_gif WHERE id=? OR id=?';
-var sqlidealimg= 'SELECT name, img_path FROM ideal WHERE id=?';
+var sqlgirlimg = 'SELECT name, img_path FROM girl_gif WHERE _id=? OR _id=?';
+var sqlmanimg = 'SELECT name, img_path FROM man_gif WHERE _id=? OR _id=?';
+var sqlidealimg= 'SELECT name, img_path FROM ideal WHERE _id=?';
 
 var sqlquery;
 var prams=[];
@@ -77,10 +77,16 @@ function end(req,res){
     return;
 }
 
+
 function create_py(req,res){
+    //console.log(req.body.select_index);
+    img_path="../images/ideal/";
     var index="";
-    for (i of req.body.select_index){
-        index+=" "+i;
+    // for (i of req.body.select_index){
+    //     index+=" "+i;
+    // }
+    for(i=req.body.select_index.length-1;i>=req.body.select_index.length-8;i--){
+        index+=" "+req.body.select_index[i];
     }
     var client = new net.Socket();
     client.connect(55555,'127.0.0.1',function(){
@@ -90,9 +96,9 @@ function create_py(req,res){
 
     client.on('data',function(data){
         console.log('Received: '+data);
+        img_path+=data;
         client.destroy();
     });
-
 }
 
 module.exports.create_py =create_py;
