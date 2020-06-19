@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
     var select=[];
-    var count=8;
+    var count=32;
     var count_v=count;
     
     //////////////////////////////////////////////////////////
@@ -18,10 +18,10 @@ $(document).ready(function(){
     function start(){
         all_bound=[];
         all_img=[];
-        for(var i=1;i<=16;i++){
+        for(var i=1;i<=32;i++){
             all_bound.push(i);
         }
-        for(var i=0;i<8;i++){
+        for(var i=0;i<32;i++){
             random_index=Math.floor(Math.random()*all_bound.length);
             all_img.push(all_bound[random_index]);
             all_bound.splice(random_index,1);
@@ -37,15 +37,19 @@ $(document).ready(function(){
         }
         if(pos==='left'){
             remain_img.push(prams[0]);
-            if(final==true)
+            if(final==true){
+                select.push(prams[1]);
                 select.push(prams[0]);
+            }
             else
                 select.push(prams[1]);
         }
         else if(pos==='right'){
             remain_img.push(prams[1]);
-            if(final==true)
+            if(final==true){
+                select.push(prams[0]);
                 select.push(prams[1]);
+            }
             else
                 select.push(prams[0]);
         }
@@ -149,8 +153,8 @@ $(document).ready(function(){
           },
           1000,function() {
             $(wid).animate({
-                width: "300px",
-                height: "400px",
+                width: $('#'+pos_rev+'_page img').width(),
+                height: $('#'+pos_rev+'_page img').height(),
                 opacity: 1.0
               },
               0);
@@ -214,6 +218,16 @@ $(document).ready(function(){
         $("#menu1 .select").prepend("<div class='select_head'><h1>장르</h1></div>");
         $("#menu1 .select").append("<div class='select_page' id='left_page'><img id='girl' src='../images/girl/girl.PNG' alt='girl'><h4 id='left_text'>여자 편</h4><div>");
         $("#menu1 .select").append("<div class='select_page' id='right_page'><img id='man' src='../images/man/man.PNG' alt='man'><h4 id='right_text'>남자 편</h4><div>");
+        var curWidth = $(window).width();
+        if(curWidth < 768){
+            document.getElementById('navigation_web').style.display = "none";
+            $('body').css('padding-top','0px');
+    
+            $('.select_page').css('width','200px');
+            $('.select_page').css('height','235px');
+            $('.select_page img').css('width','150px');
+            $('.select_page img').css('height','200px');
+        }
         start();
     });
 //////////////////////////////
