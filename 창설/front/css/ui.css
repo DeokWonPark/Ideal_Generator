@@ -96,7 +96,7 @@ header .head-line h5{margin-left: 200px;}
 /*   container   */
 #container
 {
-    background-color: whitesmoke;
+    background: linear-gradient(to bottom,#D1B6E1, #A593E0 );
     margin: 7% 7% 3.5% 7%;
     border-radius: 15px;
 }
@@ -114,7 +114,15 @@ header .head-line h5{margin-left: 200px;}
 
 #container .main_box .main_img_box img{ width: 100%; height: 100%; max-width: 500px; max-height: 550px;}
 #container .button_box{ text-align: center; padding: 5% 25% 5% 25%;}
+#container .button_box button{
+  border : 1px solid black;
+  background : #D1B6E1;
+  /* opacity : 0.9%; */
+}
 
+#Ranking_registration{
+  background: #efe3f1;
+}
 #menu1 .select{min-height: 600px; text-align: center;}
 #menu1 .select_page
 {
@@ -123,7 +131,7 @@ header .head-line h5{margin-left: 200px;}
     display: inline-block;
     text-align: center;
     padding: 30px;
-    background-color: darkgrey;
+    background-color: #b85cb730;
     margin: 20px 3% 3px 3%;
 }
 #menu1 .select {padding-bottom: 20px;}
@@ -141,7 +149,7 @@ header .head-line h5{margin-left: 200px;}
 #menu1 .box .roding_page h3{margin-top: 50px;}
 
 .final_btn{display: inline-block;}
-.final_btn button{margin-top: 8px;}
+.final_btn button{margin-top: 8px; background: #D1B6E1; color: black;}
 
 /*  footer  */
 footer{ background-color: grey; padding-bottom: 5px;}

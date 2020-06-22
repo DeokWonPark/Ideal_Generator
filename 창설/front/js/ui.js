@@ -210,10 +210,10 @@ $(document).ready(function(){
 
     // 첫 Start버튼 클릭 시
     $("#start").on("click",function(){
-        history.pushState(null, null, location.href);
-        window.onpopstate = function () {
-        history.go(1);
-};
+//         history.pushState(null, null, location.href);
+//         window.onpopstate = function () {
+//         history.go(1);
+// };
         $("#menu1 .box").empty();
         $("#menu1 .box").append("<div class='select'></div>");
         $("#menu1 .select").prepend("<div class='select_head'><h1>장르</h1></div>");
@@ -290,7 +290,7 @@ $(document).ready(function(){
                     $(".select_head h1").text("나의 이상형");
                     $(".select_page h4").remove();
                     $(".final_btn").before(
-                    '<form id="rank_form" method="post" action="/process/ranking"><input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input><input type="name" id="ideal_path" name="ideal_path"></input><button id="Ranking registration" type="submit" class="btn btn-default">이상형 등록</button></form>');
+                    '<form id="rank_form" method="post" action="/process/ranking"><input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input><input type="name" id="ideal_path" name="ideal_path"></input><button id="Ranking_registration" type="submit" class="btn btn-default">이상형 등록</button></form>');
                     // $("#ideal_path").attr('value',"sadsadsad");
 
                     $.ajax({
