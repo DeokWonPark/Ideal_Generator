@@ -260,3 +260,7 @@ footer p{color: white;}
     background-color: rgb(99, 25, 99);
     text-align: center;
   }
+
+  #ideal_path{
+    width: 0px;
+  }

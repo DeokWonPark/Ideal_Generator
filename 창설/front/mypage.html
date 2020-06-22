@@ -20,7 +20,7 @@
     <nav id="navigation_web" class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid bg-danger">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/Worldcup.html">
+                <a class="navbar-brand" href="/">
                     <img src="images/logo_.PNG" alt="Appdo">
                 </a>
             </div>
@@ -28,14 +28,13 @@
                 <ul class="nav navbar-nav bd-navbar-nav flex-row">
                     <li><a href="#">메뉴 1</a></li>
                     <li><a href="#">남자 순위</a></li>
-                    <li><a href="./rank_page.html">여자 순위</a></li>
+                    <li><a href="/rank">여자 순위</a></li>
                     <li><a href="#">메뉴 4</a></li>
                 </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li><input type="text" placeholder="Search..."></li>
-                <li><a href="./adduser.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="/process/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -44,8 +43,8 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="/">홈</a>
             <a href="#">남자 순위</a>
-            <a href="./rank_page.html">여자 순위</a>
-            <a href="#">메뉴 4</a>
+            <a href="/rank">여자 순위</a>
+            <a href="/process/logout">로그아웃</a>
         </div>
         <span onclick="openNav()">
             <div class="container">
@@ -70,6 +69,8 @@
                 <p>생성일</p>
                 
                 <p>좋아요 0</p>
+                <br>
+                <button id="rank_update" type="button" class="btn btn-default">랭킹등록</button>
             </div>
             <div id="information_box_rank" class="col-xs-4">
                 <img src = "./images/gold_star.png">
@@ -82,7 +83,7 @@
         <div id="history"> history</div>
         <ul class="test">
             <li>
-                <img id="test_image" src="./images/gold_star.PNG" alt="test"/>
+                <img id="test_image" src="./images/gold_star.png" alt="test"/>
             </li>
             <li id="test_info">
                 <p>19.05.30</p>

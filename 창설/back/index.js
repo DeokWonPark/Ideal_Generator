@@ -12,7 +12,7 @@ var session=require("express-session");
 
 var app=express();
 
-app.set('port',process.env.PORT || 3000);
+app.set('port',process.env.PORT || 80);
 
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
@@ -57,9 +57,9 @@ var mysql=require('mysql');
 var pool=mysql.createPool({
     connectionLimit:20,
     host:'localhost',
-    user:'root',
-    password:'111111',
-    database:'img_data',
+    user:'appdo',
+    password:'appdo',
+    database:'ideal',
     debug:false,
 });
 
