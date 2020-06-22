@@ -8,9 +8,7 @@ body{ width: 100%; height: 100%;  background-color: whitesmoke !important;}
     height: auto; 
     background-color: rgb(5, 5, 63);
     border-radius: 50px;
-    max-width: 485px;
-
-    
+    max-width: 485px;    
 }
 
 .content1
@@ -31,10 +29,17 @@ body{ width: 100%; height: 100%;  background-color: whitesmoke !important;}
 .title > p{
     font-size: 3rem;
 }
+.form-group #inputname{ text-align:left;}
+.form-group #inputid{text-align:left;}
+.form-group #inputpw{text-align:left;}
+.form-group #inputnick{text-algin:left;}
 .form-group > label{
-    width:80%;
-    margin-top: 5%;
+    1width:80%;
+    margin-top: 0%;
+    text-align:left;
+    
 }
+
 .form-group div{
     width:100%;
     margin-bottom: 5%;
