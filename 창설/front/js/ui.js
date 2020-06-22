@@ -1,8 +1,9 @@
 
 $(document).ready(function(){
     var select=[];
-    var count=32;
+    var count=4;
     var count_v=count;
+    var final_path="";
     
     //////////////////////////////////////////////////////////
     // 이상형 월드컵 로직
@@ -18,10 +19,10 @@ $(document).ready(function(){
     function start(){
         all_bound=[];
         all_img=[];
-        for(var i=1;i<=32;i++){
+        for(var i=1;i<=4;i++){
             all_bound.push(i);
         }
-        for(var i=0;i<32;i++){
+        for(var i=0;i<4;i++){
             random_index=Math.floor(Math.random()*all_bound.length);
             all_img.push(all_bound[random_index]);
             all_bound.splice(random_index,1);
@@ -289,7 +290,9 @@ $(document).ready(function(){
                     $(".select_head h1").text("나의 이상형");
                     $(".select_page h4").remove();
                     $(".final_btn").before(
-                    '<form id="rank_form" method="post" action="/process/ranking"><input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input><button id="Ranking registration" type="submit" class="btn btn-default">이상형 등록</button></form>');
+                    '<form id="rank_form" method="post" action="/process/ranking"><input type="name" class="form-control" id="ideal_name" name="ideal_name" placeholder="생성 된 이상형의 이름을 지어주세요"></input><input type="name" id="ideal_path" name="ideal_path"></input><button id="Ranking registration" type="submit" class="btn btn-default">이상형 등록</button></form>');
+                    // $("#ideal_path").attr('value',"sadsadsad");
+
                     $.ajax({
                         url:'/start/end',
                         dataType:'json',

@@ -35,7 +35,7 @@
             </div>
             <ul class="nav navbar-nav navbar-right">
                 <li><input type="text" placeholder="Search..."></li>
-                <li><a href="adduser" id="sign_nickname"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="/adduser" id="sign_nickname"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="/login" id="auth"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
@@ -43,6 +43,7 @@
     <nav id="navigation_app">
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="/" id="nav_sign">홈</a>
             <a href="/adduser" id="nav_sign">회원가입</a>
             <a href="/login" id="nav_auth">로그인</a>
             <a href="/rank">여자 순위</a>
@@ -74,7 +75,7 @@
                 <div class="box">
                     <div class="main_box">
                         <h2>당신의 이상형은 어떻게 생겼을까요?</h2>
-                        <p>이상형 월드컵을 통해 자신만의 이상형을 생성해보세요!</p>
+                        <p id="main_story">이상형 월드컵을 통해 자신만의 이상형을 생성해보세요!</p>
                         <strong class="main_img_box"><img src="images/main.PNG" alt="maincut"></strong>
                     </div>
                     <div class="button_box">

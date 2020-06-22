@@ -29,6 +29,9 @@ a:hover {text-decoration:none}
 #container_rank{
     display:block;
 }
+#container_rank_copy{
+    display:block;
+}
 .table{
     border : 1px solid #444444;
     background-color: #EBEEF5;

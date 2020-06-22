@@ -4,43 +4,59 @@ body{ width: 100%; height: 100%;  background-color: whitesmoke !important;}
 .content_box
 { 
     padding: 0% 0% 0% 0%; 
-    margin : 5% 27% 10% 27%;
-    height: 430px; 
+    margin : 0 auto;
+    height: auto; 
     background-color: rgb(5, 5, 63);
     border-radius: 50px;
+    max-width: 485px;
     
+}
+#return_page{
+    font-size: 3rem;
+    color:yellow;
 }
 .content1
 {
     color: white;
-    padding: 150px 15% 10% 15%;
+    padding-top:5%;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-header
-{
-    background-color:rgb(5, 5, 63);
-    padding-top: 1px;
-    height: 50px;
-    display: block;
+#title{
+    text-align: center;
+    padding-top: auto;
+    padding-bottom: auto;
+    margin-bottom: 30px;
 }
-header nav
-{
-    margin-bottom: 0px;
-    display: block;
-    height: auto;
-    padding-bottom: 0;
-    overflow: visible;
-    float: right;
+#inner_content_id{
+    width:100%;
 }
-header .logo_box img
-{
-    width: 130px;
-    float: left;
-    height: 48px;
+#inner_input_id{
+    width:100%;
+    margin-bottom:20px;
 }
-header nav .nav_top-link_nav-right{ text-align: right; height: 100%;}
-header nav ul li{height: 100%;margin:10px 10px 10px 30px;}
-header nav ul li .profile img{width: 30px; height: 30px; margin: 0px 10px 0px 0px ;}
-header nav ul li a{color: white; height: 100%; font-size: 16px;font-weight:600; line-height:30px;}
-header nav ul li:hover a{color: skyblue;}
-ol, ul, li {list-style:none}
+#inner_content_pw{
+    width:100%;
+}
+#inner_input_pw{
+    width:100%;
+    margin-bottom:10px;
+}
+#form_tobe_left{
+    width:100%;
+    margin-left:0px;
+}
+#in_btn{width:25%;}
+#up_btn{width:25%;}
+#kakao_btn{
+    width:47%;
+    height:35px;
+}
+
+#cprg{
+    font-size: smaller;
+    text-align: right;
+    padding-right:25px;
+    color:yellow;
+}
