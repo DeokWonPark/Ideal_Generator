@@ -31,7 +31,7 @@ function ranking(req,res){
                 return;
             }
     
-            var data=["../images/ideal/ideal.PNG",ideal_name,req.session.user.name]
+            var data=[ideal_path,ideal_name,req.session.user.name]
             var exec=conn.query(sqlInsertIdeal,data,function(err,result){
                 conn.release();
     
