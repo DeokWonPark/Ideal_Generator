@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
     var select=[];
-    var count=4;
+    var count=32;
     var count_v=count;
     var final_path="";
     
@@ -19,10 +19,10 @@ $(document).ready(function(){
     function start(){
         all_bound=[];
         all_img=[];
-        for(var i=1;i<=4;i++){
+        for(var i=1;i<=32;i++){
             all_bound.push(i);
         }
-        for(var i=0;i<4;i++){
+        for(var i=0;i<32;i++){
             random_index=Math.floor(Math.random()*all_bound.length);
             all_img.push(all_bound[random_index]);
             all_bound.splice(random_index,1);
@@ -112,16 +112,16 @@ $(document).ready(function(){
         // $(".select").append("<input id='range_left' type='range' min='0' max='100' value='50' step='10'>");
         // $(".select").append('<div id="h4-container"><div id="h4-subcontainer_l"><h4>50<span></span></h4></div></div>');
     }
-    // $(document).on("change input","#range_left",function(){
-    //     $(function() {
-    //         var rangePercent = $('[id="range_left"]').val();
-    //         $('#h4-subcontainer_l h4').html(rangePercent+'<span></span>');
-    //         $('[id="range_left"], h4>span').css('filter', 'hue-rotate(-' + rangePercent + 'deg)');
-    //         // $('h4').css({'transform': 'translateX(calc(-50% - 20px)) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
-    //         $('#h4-subcontainer_l h4').css({'transform': 'translateX(-50% -20px) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
+    $(document).on("change input","#range_left",function(){
+        $(function() {
+            var rangePercent = $('[id="range_left"]').val();
+            $('#h4-subcontainer_l h4').html(rangePercent+'<span></span>');
+            $('[id="range_left"], h4>span').css('filter', 'hue-rotate(-' + rangePercent + 'deg)');
+            // $('h4').css({'transform': 'translateX(calc(-50% - 20px)) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
+            $('#h4-subcontainer_l h4').css({'transform': 'translateX(-50% -20px) scale(' + (1+(rangePercent/100)) + ')', 'left': rangePercent+'%'});
         
-    //     });
-    // });
+        });
+    });
     
 
     // function reset(){
@@ -266,12 +266,16 @@ $(document).ready(function(){
 ////////////////////////////////////////////////////////
 
 
+var age;
+var makeup;
+var hair;
 
     // 마지막 이상형 생성 부분
     $(document).on("click",".final_btn #final_btn",function(){
+        // $('#final_btn').attr('disabled',true);
         $(".select").fadeOut(500,'swing',function(){
 
-            $("#container").css("background-color","white");
+            $("#container").css("background","white");
             $(".box").prepend("<div class='roding_page'><img id='roding_img' src='../images/loading.gif' alt='roading'><h3>이상형을 생성중입니다.</h3><div>");
             $.ajax({
                 url:'/start/create_py',
@@ -299,14 +303,20 @@ $(document).ready(function(){
                         type:'POST',
                         data:{},
                         success:function(result){
-                            final_path=result;
+                            final_path=result.path;
                             $(".select_page #Win").attr("src",result.path);
                             $(".select_page #Win").attr("id","ideal");
                             $("#ideal").attr('src',result.path);
+                            $("#ideal_path").attr('value',result.path);
                         }
                     });
                     $(".final_btn #final_btn").text("이상형 재생성");
                     $(".final_btn #final_btn").attr("id","create_retry");
+                    
+                    $('.select').append("<div><h4 id='sh4'>age</h4><input id='range_left' class='age' type='range' min='-10' max='10' value='0' step='1'></div>");
+                    $('.select').append("<div><h4 id='sh4'>makeup</h4><input id='range_left' class='makeup' type='range' min='-10' max='10' value='0' step='1'></div>");
+                    $('.select').append("<div><h4 id='sh4'>hair color</h4><input id='range_left' class='hair' type='range' min='-10' max='10' value='0' step='1'></div>");
+                   
                 });
             },2000);
         });
@@ -314,7 +324,18 @@ $(document).ready(function(){
 
     //이상형 재 생성
     $(document).on("click","#create_retry",function(){
-       location.reload();
+        age=$('.age').val();
+        makeup=$('.makeup').val();
+        hair=$('.hair').val();
+        $.ajax({
+            url:'/start/trans',
+            dataType:'json',
+            type:'POST',
+            data:{age:age,makeup:makeup,hair:hair,final_path:final_path},
+            success:function(result){
+                $("#ideal").attr("src", final_path+"?timestamp=" + new Date().getTime());
+            }
+        });
     });
  
 

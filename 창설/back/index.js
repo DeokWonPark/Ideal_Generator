@@ -57,9 +57,9 @@ var mysql=require('mysql');
 var pool=mysql.createPool({
     connectionLimit:20,
     host:'localhost',
-    user:'appdo',
-    password:'appdo',
-    database:'ideal',
+    user:'root',
+    password:'apmsetup',
+    database:'appdo_db',
     debug:false,
 });
 

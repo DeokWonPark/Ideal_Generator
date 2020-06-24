@@ -50,8 +50,13 @@ a:hover {text-decoration:none}
 
 #information_box_img img{
     clear:left;
-    width:90%;
+    width:270px;
     height:100%;
+}
+
+#information_box_img{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
 }
 
 #information_box_inf{

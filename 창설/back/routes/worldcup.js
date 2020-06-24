@@ -91,6 +91,7 @@ function create_py(req,res){
     var client = new net.Socket();
     client.connect(55555,'127.0.0.1',function(){
         console.log("Connected");
+        index="r"+index;
         client.write(index);
     });
 
@@ -101,6 +102,17 @@ function create_py(req,res){
     });
 }
 
+function trans(req,res){
+    var value="t "+req.body.final_path+" "+req.body.age+" "+req.body.makeup+" "+req.body.hair;
+    var client = new net.Socket();
+    client.connect(55555,'127.0.0.1',function(){
+        console.log("Connected");
+        client.write(value);
+    });
+    res.send({path:req.body.final_path});
+}
+
+module.exports.trans =trans;
 module.exports.create_py =create_py;
 module.exports.init=init;
 module.exports.start_first=start_first;
