@@ -28,6 +28,8 @@
 
 
 
+
+
 ### Purpose of the project
 
 - StyleGAN & 이상형 월드컵 게임을 이용하여 가상의 이상형 인물을 생성하는 웹 어플리케이션 제작이 목표
@@ -36,15 +38,21 @@
 
 
 
+
+
+  
+
+  
+
 ### Development stack
 
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2PD2yAr4Tt4TG62BatFqSltJmYLO1_DFUqA&usqp=CAU" width="50px" />              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTAi6Ah3SwQOrGOrMCj_yF6SgNR_wgM8rJlw&usqp=CAU" width="43px" />              <img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F998A7A4E5C04054A3B" width="50px" />        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" width="50px" />        <img src="https://www.duckon.xyz/images/express.png" width="50px" />        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/TensorFlowLogo.svg/1200px-TensorFlowLogo.svg.png" width="50px" />
 
 
 
+  
 
-
-
+  
 
 ### About The Project
 
@@ -54,7 +62,12 @@
   - 순위를 기반으로 Deep Learning 서버로 데이터 전송 
   - 이미지를 합성한 결과를 사용자에게 전송
 
+
+
+
   
+
+
 
 #### Image Generation with StyleGAN
 
@@ -80,7 +93,7 @@
 
    - Direction vector를 이용해 생성된 이미지의 세부 특징을 조정
 
-   ​	<img src="https://raw.githubusercontent.com/DeokWonPark/Ideal_Generator/master/readmeImg/directionVector.PNG" width="600px" />
+   ​	<img src="https://raw.githubusercontent.com/DeokWonPark/Ideal_Generator/master/readmeImg/directionVector.PNG" width="500px" />
 
 
 
@@ -142,6 +155,12 @@
 
 
 
+  
+
+  
+
+
+
 
 
 ### 프로젝트를 통해서 어려웠던 점, 배운점
@@ -150,8 +169,10 @@
 
    - Node js mysql모듈의  createPool()을 사용하여 연결을 초기화하고, getConnection()을 통해서 연결을 맺어 Query를 실행한다.
 
+     
+   
      ```javascript
-   const mysql=require('mysql');
+     const mysql=require('mysql');
      const pool=mysql.createPool({
          connectionLimit:20,
          host:'localhost',
@@ -189,9 +210,9 @@
          });
      ```
      
+  
      
-     
-
+   
    
 
 ### Reference
