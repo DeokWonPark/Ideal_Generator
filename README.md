@@ -24,10 +24,7 @@
 4. [프로젝트를 통해서 어려웠던 점 과 배운점](#프로젝트를-통해서-어려웠던-점-과-배운점)
 5. [Reference](#Reference)
 
-
-
-
-
+<br/><br/>
 
 
 ### Purpose of the project
@@ -36,22 +33,15 @@
 - StyleGAN 모델을 활용하여 부자연스럽지 않은 이미지 생성
 - 사용자들의 취향을 좀 더 명확하게 파악하기위한 이상형 월드컵 게임 제공
 
-
-
-
-
-  
+<br/><br/>  
 
   
 
 ### Development stack
 
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2PD2yAr4Tt4TG62BatFqSltJmYLO1_DFUqA&usqp=CAU" width="50px" />              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTAi6Ah3SwQOrGOrMCj_yF6SgNR_wgM8rJlw&usqp=CAU" width="43px" />              <img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F998A7A4E5C04054A3B" width="50px" />        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" width="50px" />        <img src="https://www.duckon.xyz/images/express.png" width="50px" />        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/TensorFlowLogo.svg/1200px-TensorFlowLogo.svg.png" width="50px" />
-
-
-
   
-
+<br/><br/>
   
 
 ### About The Project
@@ -158,10 +148,7 @@
   
 
   
-
-
-
-
+<br/><br/>
 
 ### 프로젝트를 통해서 어려웠던 점, 배운점
 
